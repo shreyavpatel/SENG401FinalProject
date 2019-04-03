@@ -17,3 +17,6 @@ Route::get('/', function () {
 
 
 Route::resource('youtube', 'YoutubeController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
