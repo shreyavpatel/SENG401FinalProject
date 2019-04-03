@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <html>
 
 <head>
@@ -13,7 +17,7 @@
 	<div>
 		Enter search item: <br>
 		<input type="text" id="searchParameter">
-		<input type="submit" id="search">
+		<input type="submit" id="search" value="Search">
 	</div>
 
 	<div id="testResultArea">
@@ -57,3 +61,5 @@
            });
             });
 </script>
+
+@endsection
