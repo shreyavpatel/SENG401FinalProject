@@ -87,26 +87,31 @@
                 <div class='row'>
                     <div class="links col-md-4" >
                         <div class="centerBlock">
-                            <img class="link_logo" src="lolipop.png"> 
-                            <br>
-                            <a href="/users/edit/{{Auth()->User()->id}}">My Flavor Profile</a>
+                            <a href="/users/edit/{{Auth()->User()->id}}">
+                                <img class="link_logo" src="lolipop.png"> 
+                                <br>
+                                My Flavor Profile
+                            </a>
                         </div>
                     </div>
 
                     <div class="links col-md-4">
                         <div class="centerBlock">
-                            <img class="link_logo" src="mouth.png"> 
-                            <br>    
-                            <a href="/feed"> Feed </a>
+                            <a href="/feed"> 
+                                <img class="link_logo" src="mouth.png"> 
+                                <br>    
+                                Feed 
+                            </a>
                         </div>
                     </div>
 
                     <div class="links col-md-4">
                         <div class="centerBlock">
-
-                            <img class="link_logo" src="jawbreaker.png"> 
-                            <br>
-                            <a href="/likes" > Jaw Droppers </a>
+                            <a href="/likes">
+                                <img class="link_logo" src="jawbreaker.png"> 
+                                <br>
+                                Jaw Droppers 
+                            </a>
                         </div>
 
                     </div>
