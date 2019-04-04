@@ -24,7 +24,7 @@
     <hr>
 
     <div class="form-group">
-        {!! Form::label('interests', 'Interests:') !!}
+        {!! Form::label('interests', 'Tastes:') !!}
         {!! Form::text('interests', $currentInterests, ['class'=>'form-control', 'placeholder' => 'seperate by a comma and a space (eg. Art, Hockey)']) !!}
     </div>
 

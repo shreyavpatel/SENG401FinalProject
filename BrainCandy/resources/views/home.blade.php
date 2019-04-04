@@ -73,6 +73,8 @@
 
                 <div class="links">
                     <a href="/users/edit/{{Auth()->User()->id}}">Edit Your Flavor Profile</a>
+                    <a href="#"> Feed </a>
+                    <a href="#"> Jaw Breakers </a>
                 </div>
             </div>
     </div>

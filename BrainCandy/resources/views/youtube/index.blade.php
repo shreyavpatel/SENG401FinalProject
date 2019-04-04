@@ -20,7 +20,7 @@
 		<input type="submit" id="search" value="Search">
 	</div>
 
-	<div id="testResultArea">
+	<div id="testResultArea" class="container">
 
 
 	</div>

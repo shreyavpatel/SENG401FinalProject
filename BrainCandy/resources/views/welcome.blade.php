@@ -20,6 +20,13 @@
                 margin: 0;
             }
 
+            h1 {
+                font-family: 'Nunito', sans-serif;
+                color: #A6A6A6;
+                font-weight: 200;
+                font-style: italic;
+            }
+
             .full-height {
                 height: 100vh;
             }
@@ -83,7 +90,8 @@
                 <div class="title m-b-md">
                    <img src="logo.png">
                 </div>
-
+                <h1> Taste your Brain. Beat Boredom. Try BrainCandy. </h1>
+                <br>
                 <div class="links">
                     <a href="about">About</a>
                     <a href="contact">Contact</a>
