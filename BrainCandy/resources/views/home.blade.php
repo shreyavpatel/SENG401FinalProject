@@ -1,67 +1,14 @@
 @extends('layouts.app')
-<style>
-          /*  html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }*/ 
-            /*makes no difference is overriden by extends*/
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+@section('content')
 
-            .position-ref {
-                position: relative;
-            }
-
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            /* .centerBlock {
-            display: table;
-            margin: auto;
-            } */
-
-            .centerBlock > a {
-                display: table;
-                margin: auto;
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-
-            .link_logo {
-                height: 85px;
-                width: 95px;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    @section('content')
     @if (session('success'))
         <div class="alert alert-success" role="alert">
             {{ session('success') }}
         </div>
     @endif
+
+    
 <!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -85,17 +32,21 @@
                 </div>
 
                 <div class='row'>
-                    <div class="links col-md-4" >
+                    <div class="links col-md-3" >
+                        <div class="centerBlock"></div>
+                    </div>
+
+                    <div class="links col-md-2" >
                         <div class="centerBlock">
                             <a href="/users/edit/{{Auth()->User()->id}}">
                                 <img class="link_logo" src="lolipop.png"> 
                                 <br>
-                                My Flavor Profile
+                                Flavor Profile
                             </a>
                         </div>
                     </div>
 
-                    <div class="links col-md-4">
+                    <div class="links col-md-2">
                         <div class="centerBlock">
                             <a href="/feed"> 
                                 <img class="link_logo" src="mouth.png"> 
@@ -105,7 +56,7 @@
                         </div>
                     </div>
 
-                    <div class="links col-md-4">
+                    <div class="links col-md-2">
                         <div class="centerBlock">
                             <a href="/likes">
                                 <img class="link_logo" src="jawbreaker.png"> 
@@ -114,6 +65,9 @@
                             </a>
                         </div>
 
+                    </div>
+                    <div class="links col-md-3" >
+                        <div class="centerBlock"></div>
                     </div>
             </div>
     </div>

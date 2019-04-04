@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="container" style="width: 55%">
+<img class="link_logo" src="jawbreaker.png"> 
 
     <h1>My Jaw Droppers</h1>
     <hr>
