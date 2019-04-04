@@ -15,8 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('youtube/whywontitwork/{interests}', 'YoutubeController@mySearch');
 
-Route::resource('youtube', 'YoutubeController');
+
+// Route::resource('youtube', 'YoutubeController');
 Route::resource('users', 'UserController');
 Route::resource('feed', 'FeedController');
 Route::resource('likes', 'LikeController');
@@ -24,7 +26,7 @@ Route::resource('likes', 'LikeController');
 // Route::get('likes', 'LikeController@index');
 
 Route::get('users/edit/{id}', 'UserController@edit');
-Route::get('youtube/show/{url}', 'YoutubeController@show');
+// Route::get('youtube/show/{url}', 'YoutubeController@show');
 // Route::post('youtube/watchVideo', 'YoutubeController@show');
 
 Auth::routes();

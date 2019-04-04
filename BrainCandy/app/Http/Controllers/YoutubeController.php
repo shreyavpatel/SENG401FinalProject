@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Route;
+use GuzzleHttp\Client;
 
 class YoutubeController extends Controller
 {
@@ -32,7 +33,22 @@ class YoutubeController extends Controller
 
     public function show($url){
     	$full_url = "https://www.youtube.com/embed/".$url;
-    	// dd($full_url);
+    	dd($full_url);
     	return view('youtube.show')->with('url', $full_url);
+    }
+
+    public function mySearch($interests){
+    	$myURL = ("https://www.googleapis.com/youtube/v3/search/?part=snippet&maxResults=25&key=AIzaSyDsbrC-_RBZ28drg6FNV01xjvJ_QkYHZvE&q=".$interests);
+    	// dd($url);
+    	$client = new Client();
+		$res = $client->get($myURL);
+		// dd($res);
+		// echo $res->getStatusCode(); // 200
+		return (json_decode((String) $res->getBody())->items);
+		  //   	$request2 = Request::create($myURL, 'GET');
+    // 	dd($request2);
+    // 	$response = Route::dispatch($request2);
+
+    // 	return $interests;
     }
 }
