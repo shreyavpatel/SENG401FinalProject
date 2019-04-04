@@ -39,6 +39,11 @@
                 text-transform: uppercase;
             }
 
+            .link_logo {
+                height: 85px;
+                width: 95px;
+            }
+
             .m-b-md {
                 margin-bottom: 30px;
             }
@@ -73,8 +78,11 @@
 
                 <div class="links">
                     <a href="/users/edit/{{Auth()->User()->id}}">Edit Your Flavor Profile</a>
+                    <img class="link_logo" src="lolipop.png"> 
                     <a href="#"> Feed </a>
+                    <img class="link_logo" src="jawbreaker.png"> 
                     <a href="#"> Jaw Breakers </a>
+                    <img class="link_logo" src="jawbreaker.png"> 
                 </div>
             </div>
     </div>
