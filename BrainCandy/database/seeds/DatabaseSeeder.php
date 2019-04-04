@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Interest;
+use App\Like;
 
 class DatabaseSeeder extends Seeder
 {
@@ -33,6 +34,12 @@ class DatabaseSeeder extends Seeder
         Interest::create([
             'user_id'=>$ross->id,
             'interest'=>'Rugby'
+        ]);
+
+        Like::create([
+            'user_id'=>$ross->id,
+            'item'=>'rVynOFlmK_Q',
+            'platform'=> 0 //youtube
         ]);
 
 

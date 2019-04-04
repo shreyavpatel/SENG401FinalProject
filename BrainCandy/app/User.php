@@ -51,4 +51,20 @@ class User extends Authenticatable
         return $string;
     }
 
+    public function likes(){
+        return $this->hasMany(Like::class);
+    }
+
+    public function youtubeLikes(){
+        return $this->likes()->where('platform',0)->get();
+    }
+
+    public function flickrLikes(){
+        return $this->likes()->where('platform',1)->get();
+    }
+
+    public function twitterLikes(){
+        return $this->likes()->where('platform',2)->get();
+    }
+
 }

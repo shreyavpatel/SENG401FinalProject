@@ -106,7 +106,7 @@
 
                             <img class="link_logo" src="jawbreaker.png"> 
                             <br>
-                            <a href="#" > Jaw Droppers </a>
+                            <a href="/likes" > Jaw Droppers </a>
                         </div>
 
                     </div>
