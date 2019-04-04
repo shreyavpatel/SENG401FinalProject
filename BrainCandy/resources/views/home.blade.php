@@ -84,7 +84,7 @@
                     <img src="logogrey.png">
                 </div>
 
-                <div class='row '>
+                <div class='row'>
                     <div class="links col-md-4" >
                         <div class="centerBlock">
                             <img class="link_logo" src="lolipop.png"> 
@@ -106,7 +106,7 @@
 
                             <img class="link_logo" src="jawbreaker.png"> 
                             <br>
-                            <a href="#" > Jaw Breakers </a>
+                            <a href="#" > Jaw Droppers </a>
                         </div>
 
                     </div>
