@@ -65,6 +65,7 @@
         .m-b-md {
             margin-bottom: 30px;
         }
+
     </style>
 </head>
 <body style="background-color: #E8F0F2">
@@ -72,7 +73,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                        <img style="height: 55px; width: 65px" src="{{ asset('candy.png') }}">
+                        <img style="height: 55px; width: 65px;" src="{{ asset('candy.png') }}">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

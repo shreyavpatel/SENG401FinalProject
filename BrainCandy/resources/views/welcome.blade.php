@@ -87,8 +87,8 @@
                 <h1> Taste your Brain. Beat Boredom. Try BrainCandy. </h1>
                 <br>
                 <div class="links">
-                    <a href="about">About</a>
-                    <a href="contact">Contact</a>
+                    <!-- <a href="about">About</a>
+                    <a href="contact">Contact</a> -->
                 </div>
             </div>
         </div>
