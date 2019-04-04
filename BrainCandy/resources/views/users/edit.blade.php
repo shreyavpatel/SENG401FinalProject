@@ -4,8 +4,20 @@
 
 <div class="container" style="width: 55%">
 
-    <h2>{{$user->name}}</h2>
-    <h1>Edit Your Flavor Profile</h1>
+
+    <div class='row'>
+        <div class="col-md-2" >
+            <img class="link_logo" src="lolipop.png"> 
+        </div>
+        <div class="col-md-8" style='text-align:center'>
+            <h2>{{$user->name}}</h2>
+            <h1>Edit Your Flavor Profile</h1>
+        </div>     
+        <div class="col-md-2" >
+            <img class="link_logo" src="lolipop.png">
+        </div> 
+    </div>
+
     <hr>
 
     {!! Form::model($user, ['method'=>'PATCH', 'action'=>['UserController@update',$user->id]]) !!}

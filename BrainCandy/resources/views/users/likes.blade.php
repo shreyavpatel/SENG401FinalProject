@@ -3,10 +3,21 @@
 @section('content')
 
 <div class="container" style="width: 55%">
-<img class="link_logo" src="jawbreaker.png"> 
 
-    <h1>My Jaw Droppers</h1>
-    <hr>
+
+<div class='row'>
+        <div class="col-md-3" >
+            <img class="link_logo" src="jawbreaker.png"> 
+        </div>
+        <div class="col-md-7" style='text-align:center'>
+            <br>
+            <h1>My Jaw Droppers</h1>
+        </div>     
+        <div class="col-md-2" >
+            <img class="link_logo" src="jawbreaker.png">
+        </div> 
+</div>
+<hr>
 
 @foreach($likes as $like)
 <div class="row">
@@ -34,7 +45,7 @@
     @endif
 
         <div class="col-md-1">
-            <div class="btn-group-vertical" style="position:absolute;bottom:0">
+            <div class="btn-group-vertical" style="position:absolute;right:30%;bottom:0">
                 <!--  REMOVE BUTTON   -->
                 {!! Form::model($like, ['method'=>'DELETE', 'action'=>['LikeController@destroy',$like->id]]) !!}
                 {!! Form::submit('Remove', ['class' => 'btn btn-outline-danger btn-sm']) !!}
