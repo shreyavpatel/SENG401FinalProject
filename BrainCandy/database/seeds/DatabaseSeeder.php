@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use App\Interest;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,16 +14,27 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
-        $user = User::create([
+        $ross = User::create([
             'email' => 'rossjbartlett@gmail.com',
             'name' => 'Ross Bartlett',
             'password' => Hash::make('password')
         ]);
 
-        $user = User::create([
+        $dyl = User::create([
             'email' => 'timeparadox98@gmail.com',
             'name' => 'Dylan Gordon',
             'password' => Hash::make('password')
         ]);
+
+        Interest::create([
+            'user_id'=>$ross->id,
+            'interest'=>'Calgary Flames'
+        ]);
+        Interest::create([
+            'user_id'=>$ross->id,
+            'interest'=>'Rugby'
+        ]);
+
+
     }
 }

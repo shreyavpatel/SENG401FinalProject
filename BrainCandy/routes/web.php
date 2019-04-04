@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 
 Route::resource('youtube', 'YoutubeController');
+Route::resource('users', 'UserController');
+
+Route::get('users/edit/{id}', 'UserController@edit');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -36,4 +36,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function interests(){
+        return $this->hasMany(Interest::class);
+    }
+
+    public function interestsString(){
+        $interests = $this->interests;
+        $string = '';
+        foreach($interests as $i){
+            $string .= $i->interest .=', ';
+        }
+        $string = rtrim($string,', '); //remove extra ', ' at end
+        return $string;
+    }
+
 }
