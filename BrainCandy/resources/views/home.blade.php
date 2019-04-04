@@ -1,13 +1,14 @@
 @extends('layouts.app')
 <style>
-            html, body {
+          /*  html, body {
                 background-color: #fff;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
-            }
+            }*/ 
+            /*makes no difference is overriden by extends*/
 
             .flex-center {
                 align-items: center;
@@ -42,13 +43,13 @@
                 margin-bottom: 30px;
             }
         </style>
-@section('content')
-@if (session('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-<div class="container">
+    @section('content')
+    @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
+<!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -61,17 +62,17 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <div class="flex-center position-ref ">
             <div class="content">
                 <div class="title m-b-md">
-                    BrainCandy
+                    <img src="logogrey.png">
                 </div>
 
                 <div class="links">
-                    <a href="/users/edit/{{Auth()->User()->id}}">Edit Flavor Profile</a>
+                    <a href="/users/edit/{{Auth()->User()->id}}">Edit Your Flavor Profile</a>
                 </div>
             </div>
     </div>

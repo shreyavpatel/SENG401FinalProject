@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    BrainCandy
+                   <img src="logo.png">
                 </div>
 
                 <div class="links">
