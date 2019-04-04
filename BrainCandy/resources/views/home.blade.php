@@ -1,14 +1,5 @@
 @extends('layouts.app')
 <style>
-          /*  html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }*/ 
-            /*makes no difference is overriden by extends*/
 
             .flex-center {
                 align-items: center;
@@ -28,11 +19,6 @@
             .title {
                 font-size: 84px;
             }
-
-            /* .centerBlock {
-            display: table;
-            margin: auto;
-            } */
 
             .centerBlock > a {
                 display: table;
