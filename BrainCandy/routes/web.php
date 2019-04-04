@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 Route::resource('youtube', 'YoutubeController');
 Route::resource('users', 'UserController');
+Route::resource('feed', 'FeedController');
 
 Route::get('users/edit/{id}', 'UserController@edit');
 Route::get('youtube/show/{url}', 'YoutubeController@show');

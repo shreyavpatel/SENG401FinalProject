@@ -79,7 +79,7 @@
                 <div class="links">
                     <a href="/users/edit/{{Auth()->User()->id}}">Edit Your Flavor Profile</a>
                     <img class="link_logo" src="lolipop.png"> 
-                    <a href="#"> Feed </a>
+                    <a href="/feed"> Feed </a>
                     <img class="link_logo" src="jawbreaker.png"> 
                     <a href="#"> Jaw Breakers </a>
                     <img class="link_logo" src="jawbreaker.png"> 
