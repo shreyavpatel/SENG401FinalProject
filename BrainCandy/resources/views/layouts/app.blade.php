@@ -12,6 +12,9 @@
     <title>{{ config('app.name', 'BrainCandy') }}</title>
 
     <!-- Scripts -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -20,6 +23,49 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .link_logo {
+                height: 85px;
+                width: 95px;
+        }
+
+        .centerBlock > a {
+                display: table;
+                margin: auto;
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .flex-center{
+                align-items: center;
+                diplay: flex;
+                justify-content: center;
+            }
+
+
+            .position-ref {
+                position: relative;
+            }
+
+
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 84px;
+            }
+
+
+        .m-b-md {
+            margin-bottom: 30px;
+        }
+    </style>
 </head>
 <body style="background-color: #E8F0F2">
     <div id="app">

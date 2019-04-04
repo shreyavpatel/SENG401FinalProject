@@ -20,6 +20,9 @@ Route::resource('youtube', 'YoutubeController');
 Route::resource('twitter', 'TwitterController');
 Route::resource('users', 'UserController');
 Route::resource('feed', 'FeedController');
+Route::resource('likes', 'LikeController');
+
+// Route::get('likes', 'LikeController@index');
 
 Route::get('users/edit/{id}', 'UserController@edit');
 Route::get('youtube/show/{url}', 'YoutubeController@show');

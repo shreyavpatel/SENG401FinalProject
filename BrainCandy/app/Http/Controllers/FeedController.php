@@ -9,6 +9,8 @@ use Auth;
 class FeedController extends Controller
 {
     public function index(){
+
+        return view('feed.show');
     	// Things to do in Index:
     	// TODO: Grab youtube api data based on 'tastes'
     	// TODO: Do the same for flickr and Twitter
@@ -23,8 +25,8 @@ class FeedController extends Controller
     		array_push($interests_array, $item->interest);
     	}
 
-    	$request = Route::create('/youtube/search/', 'GET');
+    	//$request = Route::create('/youtube/search/', 'GET');
 
-    	$response = Route::dispatch($request);
+    	//$response = Route::dispatch($request);
     }
 }
