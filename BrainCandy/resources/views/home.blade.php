@@ -89,7 +89,7 @@
                         <div class="centerBlock">
                             <img class="link_logo" src="lolipop.png"> 
                             <br>
-                            <a href="/users/edit/{{Auth()->User()->id}}">Edit Your Flavor Profile</a>
+                            <a href="/users/edit/{{Auth()->User()->id}}">My Flavor Profile</a>
                         </div>
                     </div>
 
