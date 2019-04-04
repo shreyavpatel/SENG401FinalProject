@@ -41,7 +41,7 @@ class FeedController extends Controller
 			info($video);
 		}
 
-        return view('feed.show');
+        return view('feed.show')->('youtube_interests', $interests_videos);
     	// Things to do in Index:
     	// TODO: Grab youtube api data based on 'tastes'
     	// TODO: Do the same for flickr and Twitter
