@@ -3,60 +3,64 @@
 @section('content')
 
 <script>
-	$(document).ready(function(){
-		var options = [];
-		$( '.dropdown-menu li' ).on( 'click', function(event) {
-
-		   var $target = $( event.currentTarget ),
-		       val = $target.attr( 'data-value' ),
-		       $inp = $target.find( 'input' ),
-		       idx;
-
-		   if ( ( idx = options.indexOf( val ) ) > -1 ) {
-		      options.splice( idx, 1 );
-		      setTimeout( function() { $inp.prop( 'checked', false ) }, 0);
-		   } else {
-		      options.push( val );
-		      setTimeout( function() { $inp.prop( 'checked', true ) }, 0);
-		   }
-
-		   $( event.target ).blur();
-		      
-			console.log( options );
-			return false;
-		});
-
-		$( "li" ).hover( function() {
-			$(this).css("background-color", "#CBCBCB");
-			}, 
-			function(){
-  				$(this).css("background-color", "#fff");
-		});
-
+	$(document).ready(function() {
+	$('.mdb-select').materialSelect();
 	});
-
 </script>
 
 <div class="container" style="width:65%">
 
-	<div class="row">
-       <div class="col-lg-12">
+	<div class="col-md-2" style="float: right">
 
-			<div class="btn-group" style="float: right">
-			  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-			    Filter Feed
-			  </button>
-			  <ul class="dropdown-menu" style="text-align: left">
-			  	<li data-value="videoopt" style="display:inline-block;padding-left: 15px;padding-right: 29.5px"><input type="checkbox" data-value="option1"/>&nbsp;Youtube Videos</li>
-			  	<li data-value="photoopt" style="display:inline-block;padding-left: 15px;padding-right: 47.5px"><input type="checkbox"/>&nbsp;Flickr photos</li>
-			  	<li data-value="tweetopt" style="display:inline-block;padding-left: 15px;padding-right: 81.5px"><input type="checkbox"/>&nbsp;Tweets</li>
+	  <select class="mdb-select colorful-select dropdown-success md-form">
+	    <option value="" disabled selected>Filter Feed</option>
+	    <option value="1">Youtube Videos</option>
+	    <option value="2">Tweets</option>
+	    <option value="3">Flickr Photos</option>
+	  </select>
+	  <!-- <button class="btn-save btn btn-primary btn-sm">Save</button> -->
 
-			  </ul>
-			</div>
-
-		</div>
 	</div>
+	
+</div>	
 
+<!-- <div style="width: 60px; float: right">	
+
+ {{ Form::open(['method' => 'GET']) }}
+   
+                  <div class="form-group">
+                    <lable for="country">Filter</lable>
+                    <select name="country" id="country" class="form-control">
+                      <option value="optvideos">&nbsp;&nbsp;&nbsp;Youtube Videos</option>
+                    </select> 
+                  </div>
+
+ {{ Form::close() }}
+
+</div> -->
+
+<!-- <div class="btn-group" style="float: right">
+  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Filter Feed
+  </button>
+  <div class="dropdown-menu multiselect">
+    <a class="dropdown-item" href="#">
+    	<div class="radio">
+  			<label><input type="radio" name="optvideos">&nbsp;&nbsp;&nbsp;Youtube Videos</label>
+		</div>
+	</a>
+    <a class="dropdown-item" href="#">
+    	<div class="radio">
+  			<label><input type="radio" name="opttweets">&nbsp;&nbsp;&nbsp;Tweets</label>
+		</div>
+	</a>
+    <a class="dropdown-item" href="#">
+    	<div class="radio">
+  			<label><input type="radio" name="optphotos">&nbsp;&nbsp;&nbsp;Flickr Photos</label>
+		</div>
+	</a>
+  </div>
+</div> -->
 
 </div>
 
