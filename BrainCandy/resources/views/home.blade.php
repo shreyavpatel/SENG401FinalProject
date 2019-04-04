@@ -29,7 +29,14 @@
                 font-size: 84px;
             }
 
-            .links > a {
+            /* .centerBlock {
+            display: table;
+            margin: auto;
+            } */
+
+            .centerBlock > a {
+                display: table;
+                margin: auto;
                 color: #636b6f;
                 padding: 0 25px;
                 font-size: 13px;
@@ -38,6 +45,7 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
+
 
             .link_logo {
                 height: 85px;
@@ -76,14 +84,32 @@
                     <img src="logogrey.png">
                 </div>
 
-                <div class="links">
-                    <a href="/users/edit/{{Auth()->User()->id}}">Edit Your Flavor Profile</a>
-                    <img class="link_logo" src="lolipop.png"> 
-                    <a href="/feed"> Feed </a>
-                    <img class="link_logo" src="mouth.png"> 
-                    <a href="#"> Jaw Breakers </a>
-                    <img class="link_logo" src="jawbreaker.png"> 
-                </div>
+                <div class='row '>
+                    <div class="links col-md-4" >
+                        <div class="centerBlock">
+                            <img class="link_logo" src="lolipop.png"> 
+                            <br>
+                            <a href="/users/edit/{{Auth()->User()->id}}">Edit Your Flavor Profile</a>
+                        </div>
+                    </div>
+
+                    <div class="links col-md-4">
+                        <div class="centerBlock">
+                            <img class="link_logo" src="mouth.png"> 
+                            <br>    
+                            <a href="/feed"> Feed </a>
+                        </div>
+                    </div>
+
+                    <div class="links col-md-4">
+                        <div class="centerBlock">
+
+                            <img class="link_logo" src="jawbreaker.png"> 
+                            <br>
+                            <a href="#" > Jaw Breakers </a>
+                        </div>
+
+                    </div>
             </div>
     </div>
 
