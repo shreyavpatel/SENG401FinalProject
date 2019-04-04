@@ -19,11 +19,11 @@
 		<input type="text" id="searchParameter">
 		<input type="submit" id="search" value="Search">
 	</div>
+	
+		<div id="testResultArea" class="container">
 
-	<div id="testResultArea" class="container">
 
-
-	</div>
+		</div>
 </body>
 
 </html>
@@ -50,16 +50,18 @@
                   	// console.log(result['items']['snippet']);
                   		$("#testResultArea").html('');
 					    $.each(result['items'], function (index, value) {
-					    	console.log(value);
+					    	console.log(("https://www.youtube.com/watch?v=" +value['id']['videoId']));
 					        $("#testResultArea").append (
+					        	// "<input type='hidden' name='url' value='" + ("https://www.youtube.com/watch?v=" + value['id']['videoId']) + "'>" +
+					        	"<a href='youtube/show/" + value['id']['videoId'] + "'>" +
 							 "  <img src="+ value['snippet']['thumbnails']['default']['url']+" class='img-fluid'>" + 
 							 "<h3> " + value['snippet']['title'] + "</h3>" + 
-							 "<h5> Channel: " + value['snippet']['channelTitle'] + "</h5>" +
+							 "<h5> Channel: " + value['snippet']['channelTitle'] + "</h5>" + "</a>" +
 							"<hr>");
 					});
                   }});
            });
-            });
+        });
 </script>
 
 @endsection

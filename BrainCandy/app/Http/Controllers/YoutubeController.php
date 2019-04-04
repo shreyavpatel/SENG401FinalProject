@@ -29,4 +29,10 @@ class YoutubeController extends Controller
 
     	return "nothing";
     }
+
+    public function show($url){
+    	$full_url = "https://www.youtube.com/embed/".$url;
+    	// dd($full_url);
+    	return view('youtube.show')->with('url', $full_url);
+    }
 }

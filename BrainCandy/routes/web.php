@@ -20,6 +20,8 @@ Route::resource('youtube', 'YoutubeController');
 Route::resource('users', 'UserController');
 
 Route::get('users/edit/{id}', 'UserController@edit');
+Route::get('youtube/show/{url}', 'YoutubeController@show');
+// Route::post('youtube/watchVideo', 'YoutubeController@show');
 
 Auth::routes();
 
