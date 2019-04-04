@@ -5,7 +5,7 @@
 <div class="container" style="width: 55%">
 
     <h2>{{$user->name}}</h2>
-    <h1>Edit Flavor Profile</h1>
+    <h1>Edit Your Flavor Profile</h1>
     <hr>
 
     {!! Form::model($user, ['method'=>'PATCH', 'action'=>['UserController@update',$user->id]]) !!}

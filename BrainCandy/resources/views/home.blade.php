@@ -81,7 +81,7 @@
                     <img class="link_logo" src="lolipop.png"> 
                     <a href="/feed"> Feed </a>
                     <img class="link_logo" src="mouth.png"> 
-                    <a href="#"> Jaw Breakers </a>
+                    <a href="#"> Jaw Droppers </a>
                     <img class="link_logo" src="jawbreaker.png"> 
                 </div>
             </div>
