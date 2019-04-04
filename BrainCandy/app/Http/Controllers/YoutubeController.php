@@ -32,8 +32,7 @@ class YoutubeController extends Controller
     }
 
     public function show($url){
-    	$full_url = "https://www.youtube.com/embed/".$url;
-    	dd($full_url);
+    	$full_url = "https://www.youtube.com/embed/".$url.'?autoplay=1';
     	return view('youtube.show')->with('url', $full_url);
     }
 
