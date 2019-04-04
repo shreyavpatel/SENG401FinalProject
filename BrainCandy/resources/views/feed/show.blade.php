@@ -27,8 +27,8 @@
 			return false;
 		});
 
-		$( "li" ).hover( function() {
-			$(this).css("background-color", "#CBCBCB");
+		$( ".myHover" ).hover( function() {
+			$(this).css("background-color", "#6DD1B0");
 			}, 
 			function(){
   				$(this).css("background-color", "#fff");
@@ -40,17 +40,41 @@
 
 <div class="container" style="width:65%">
 
+
+<div class='row'>
+        <div class="col-md-2" >
+            <img class="link_logo" src="{{ asset('mouth.png') }}">
+        </div>
+				<div class="col-md-8" style='text-align:center'>
+						<br>
+            <h1>My Feed</h1>
+        </div>     
+        <div class="col-md-2" >
+            <img class="link_logo" src="{{ asset('mouth.png') }}">
+        </div> 
+		</div>
+
+	<hr>
+
+
+
 	<div class="row">
        <div class="col-lg-12">
 
 			<div class="btn-group" style="float: right">
-			  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+			  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" style='background-color:#6DD1B0'>
 			    My Palette
 			  </button>
-			  <ul class="dropdown-menu" style="text-align: left">
-			  	<li data-value="videoopt" style="display:inline-block;padding-left: 15px;padding-right: 29.5px"><input type="checkbox" data-value="option1"/>&nbsp;Youtube Videos</li>
-			  	<li data-value="photoopt" style="display:inline-block;padding-left: 15px;padding-right: 47.5px"><input type="checkbox"/>&nbsp;Flickr photos</li>
-			  	<li data-value="tweetopt" style="display:inline-block;padding-left: 15px;padding-right: 81.5px"><input type="checkbox"/>&nbsp;Tweets</li>
+				<ul class="dropdown-menu" style="text-align: left">
+					<div class='myHover'>
+			  		<li data-value="videoopt" style="display:inline-block;padding-left: 15px;"><input type="checkbox" data-value="option1"/>&nbsp;Youtube Videos</li>
+					</div>
+					<div class='myHover'>
+						<li data-value="photoopt" style="display:inline-block;padding-left: 15px;"><input type="checkbox"/>&nbsp;Flickr photos</li>
+					</div>
+					<div class='myHover'>
+						<li data-value="tweetopt" style="display:inline-block;padding-left: 15px;"><input type="checkbox"/>&nbsp;Tweets</li>
+					</div>
 
 			  </ul>
 			</div>
