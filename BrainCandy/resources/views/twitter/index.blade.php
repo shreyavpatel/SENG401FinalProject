@@ -58,7 +58,7 @@
                   }
               }); // {{ url('twitter')}} + "/" +
                $.ajax({
-                  url: "{{ url('/api/twitter')}}" + "/" +$("#searchParameter").val(),
+                  url: "{{ url('/api/twitter')}}" + "/50/" +$("#searchParameter").val(),
                   method: 'GET',
                   data: {
 
