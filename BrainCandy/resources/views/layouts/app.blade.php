@@ -16,7 +16,6 @@
           integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
           crossorigin="anonymous"></script>
     <script src="" defer></script>
-    <!-- TODO removed {{ asset('js/app.js') }} to make tags work, but othr stuff probably doesnt work now -->
 
 
 
