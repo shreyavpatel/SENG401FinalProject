@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dea73f645b4d7f0165fe37d59973f7fe",
+    "content-hash": "9c1089efb1fc5b4562731cf5a9b56740",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2065,68 +2065,6 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
-        },
-        {
-            "name": "rtconner/laravel-tagging",
-            "version": "3.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rtconner/laravel-tagging.git",
-                "reference": "2b151ba2962b6ae6cc1499b5983b95c5174787d9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rtconner/laravel-tagging/zipball/2b151ba2962b6ae6cc1499b5983b95c5174787d9",
-                "reference": "2b151ba2962b6ae6cc1499b5983b95c5174787d9",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": "^5.0",
-                "illuminate/support": "^5.0",
-                "php": ">= 7.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~1.2",
-                "orchestra/testbench": "~3.8",
-                "phpunit/phpunit": "7.5.*",
-                "vlucas/phpdotenv": "~3.3"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Conner\\Tagging\\Providers\\TaggingServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Conner\\Tagging\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Robert Conner",
-                    "email": "rtconner+gh@smarter.bz"
-                }
-            ],
-            "description": "Use PHP traits to extend Laravel Eloquent Models to allow Tags. Models can be marked as Taggable.",
-            "homepage": "https://smartersoftware.net/packages/laravel-tagging-taggable",
-            "keywords": [
-                "Taggable",
-                "eloquent",
-                "laravel",
-                "laravel5",
-                "tag",
-                "tagged",
-                "tagging",
-                "tags"
-            ],
-            "time": "2019-03-21T01:31:09+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

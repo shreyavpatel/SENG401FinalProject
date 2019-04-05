@@ -45,9 +45,8 @@ class UserController extends Controller
     public function edit($id)
     {
     	$user = User::findOrFail($id);
-        $currentInterests = $user->interestsStringArray();//$user->interestsString();
-        // dd($currentInterests);
-
+        $currentInterests = $user->interestsString();
+        // dd($user);
     	return view('users.edit', compact('user', 'currentInterests'));
 
     }
@@ -56,21 +55,14 @@ class UserController extends Controller
      * Update the specified resource in storage
      */
     public function update(UserRequest $request, $id){
-
-
         $user = User::findOrFail($id);
         $user->update([
             'name' => $request->input('name'),
             'email' => $request->input('email')
         ]);
 
-        // $interestsString = $request->input('interests');
-        // $new_interests = explode(', ', $interestsString);
-
-        $interestsString = $request->input('tastes');
-        $new_interests = explode(',', $interestsString);
-
-        // dd($new_interests);
+        $interestsString = $request->input('interests');
+        $new_interests = explode(', ', $interestsString);
         foreach($new_interests as $i){
             if(!Interest::exists($id,$i)){
                 //make new row in interest table
@@ -80,10 +72,8 @@ class UserController extends Controller
                 ]);
             }
         }
-        //now remove interests that were deleted
-        // $oldInterests = explode(', ', $user->interestsString());
-        $oldInterests = $user->interestsStringArray();
-        // dd($oldInterests);
+        //TODO remove interests that were deleted
+        $oldInterests = explode(', ', $user->interestsString());
         foreach($oldInterests as $i){
             if (!in_array($i, $new_interests)) {
                 //this old interest is no longer in the new_interests
