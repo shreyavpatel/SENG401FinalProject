@@ -38,7 +38,7 @@ class YoutubeController extends Controller
 
     public function mySearch($interests){
     	$myURL = ("https://www.googleapis.com/youtube/v3/search/?part=snippet&maxResults=25&key=AIzaSyDsbrC-_RBZ28drg6FNV01xjvJ_QkYHZvE&q=".$interests);
-    	// dd($url);
+    	
     	$client = new Client();
 		$res = $client->get($myURL);
 		// dd($res);

@@ -20,12 +20,30 @@ class FeedController extends Controller
 
     	foreach($user_interests as $interest){
 
-			$request = Request::create('/youtube/whywontitwork/'.$interest, "GET"); // TODO what is this link supposed to be
+    		// This is an example JSON request for the purpose of testing to save Queries
 
-			$response = Route::dispatch($request);
+    		$path = storage_path() . "/app/public/whales_youtube.json";
 
-			
-			$youtube_myInterests_results = json_decode($response->content());
+
+    		$response = json_decode(file_get_contents($path)); 
+
+    		$youtube_myInterests_results = $response;
+
+    		// We will enable this json request for demo 
+    		// ****************
+
+
+			// $request = Request::create('/youtube/whywontitwork/'.$interest->interest, "GET");
+
+			// $response = Route::dispatch($request);
+			// $youtube_myInterests_results = json_decode($response->content());
+
+
+
+			// *******************
+
+			// return $response;
+
 			if($youtube_myInterests_results == null){
 				// youtube didnt return anything, likely hit quota for the day
 				abort(500); // server error
@@ -34,15 +52,17 @@ class FeedController extends Controller
 			foreach($youtube_myInterests_results as $interest_result){
 
 				// randomly choose some videos
-				if(rand() < 0.5){
+				if(rand(0, 10) < 2){
+									dd($interest_result);
+
 					array_push($interests_videos, $interest_result);
 				}
 			}
 		}
 
-		foreach($interests_videos as $video){
-			info($video); //write info to console.log
-		}
+		// foreach($interests_videos as $video){
+		// 	info($video); //write info to console.log
+		// }
 
         return view('feed.show')->with('youtube_interests', $interests_videos);
     	// Things to do in Index:
