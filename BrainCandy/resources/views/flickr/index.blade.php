@@ -46,12 +46,12 @@
 								},
 
                 success: function (result) {
-
 									$("#testResultArea").html('');
 	                $.each(result['photos']['photo'], function (index, value) {
+										console.log(value);
 										$("#testResultArea").append(
 											"<img src= https://farm"+value['farm']+".staticflickr.com/"+value['server']+"/"+value['id']+"_"+value['secret']+".jpg>"+
-											"<br><a href='https://farm"+value['farm']+".staticflickr.com/"+value['server']+"/"+value['id']+"_"+value['secret']+".jpg'>"+value['title']+"</a><br><br>"
+											"<br><a href='https://www.flickr.com/photos/"+value['owner']+"/"+value['id']+"'>"+value['title']+"</a><br><br>"
 										);
 	                });
                 }});
