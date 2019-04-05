@@ -34,6 +34,8 @@
   				$(this).css("background-color", "#fff");
 		});
 
+
+
 	});
 
 </script>
@@ -82,6 +84,17 @@
 		</div>
 	</div>
 
+	<div id="Youtube results">
+
+		<h4> Your youtube FLAVOURS </h4>
+
+		@foreach ($youtube_interests as $interest)
+
+		<script> console.log("Interest: "); console.log("Interests: {{ $interest }}") </script>
+
+		@endforeach
+
+	</div>
 
 </div>
 @stop
