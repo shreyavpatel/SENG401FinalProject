@@ -99,6 +99,18 @@
 		</div>
 	</div>
 
+  <div id="Flickr Results">
+    <h4> Your Flickr FLAVOURS </h4>
+    @foreach ($flickrs as $flickr)
+      <hr>
+      <div class="flickr_container" >
+        <img src= "https://farm{{$flickr['farm']}}.staticflickr.com/{{$flickr['server']}}/{{$flickr['id']}}_{{$flickr['secret']}}.jpg">
+        <br><a href="https://www.flickr.com/photos/{{$flickr['owner']}}/{{$flickr['id']}}">{{$flickr['title']}}</a>
+      </div>
+      <a>
+    @endforeach
+  </div>
+
 	<div id="Twitter Results">
 
 
@@ -110,9 +122,8 @@
 		@endforeach
 	</div>
 
+
 	<div id="Youtube results">
-
-
 		<h4> Your youtube FLAVOURS </h4>
 		@foreach ($youtube_interests as $interest)
 
