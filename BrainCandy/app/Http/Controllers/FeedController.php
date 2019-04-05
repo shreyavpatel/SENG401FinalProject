@@ -20,13 +20,16 @@ class FeedController extends Controller
 
     	foreach($user_interests as $interest){
 
-			$request = Request::create('/youtube/whywontitwork/'.$interest, "GET");
+			$request = Request::create('/youtube/whywontitwork/'.$interest, "GET"); // TODO what is this link supposed to be
 
 			$response = Route::dispatch($request);
 
 			
 			$youtube_myInterests_results = json_decode($response->content());
-			
+			if($youtube_myInterests_results == null){
+				// youtube didnt return anything, likely hit quota for the day
+				abort(500); // server error
+			}
 
 			foreach($youtube_myInterests_results as $interest_result){
 
@@ -38,10 +41,10 @@ class FeedController extends Controller
 		}
 
 		foreach($interests_videos as $video){
-			info($video);
+			info($video); //write info to console.log
 		}
 
-        return view('feed.show')->('youtube_interests', $interests_videos);
+        return view('feed.show')->with('youtube_interests', $interests_videos);
     	// Things to do in Index:
     	// TODO: Grab youtube api data based on 'tastes'
     	// TODO: Do the same for flickr and Twitter
