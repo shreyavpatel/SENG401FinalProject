@@ -36,8 +36,8 @@
                   }
               });
 
-              // var flickerAPI = "https://api.flickr.com/services/feeds/photos_public.gne?format=json&tags=" + $("#searchParameter").val();
-              var flickerAPI = "https://api.flickr.com/services/rest/?api_key=9ba520fd0687a94ce0684343f3def081&method=flickr.photos.search&format=json&nojsoncallback=1&tags=" + $("#searchParameter").val();
+              // var flickerAPI = "https://api.flickr.com/services/feeds/photos_public.gne?format=json&tags=" + $("#searchParameter").val();format=json&nojsoncallback=1
+              var flickerAPI = "https://api.flickr.com/services/rest/?api_key=9ba520fd0687a94ce0684343f3def081&method=flickr.photos.search&tags=" + $("#searchParameter").val();
 
               // $.ajax({
               //   url: flickerAPI,
@@ -61,12 +61,12 @@
               $.ajax({
                 url: flickerAPI,
                 method: 'GET',
-                dataType: "jsonp",
-                jsonpCallback: 'jsonFlickrFeed',
+                // dataType: "jsonp",
+                // jsonpCallback: 'jsonFlickrFeed',
                 success: function (result) {
                   $("#testResultArea").html('');
                 $.each(result['items'], function (index, value) {
-                $("<img>").attr("src", value.media.m).appendTo("#testResultArea");
+                $("<img>").attr("src", value.photo.m).appendTo("#testResultArea");
                 });
                 }});
 
