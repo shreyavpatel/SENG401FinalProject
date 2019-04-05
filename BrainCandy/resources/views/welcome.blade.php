@@ -37,10 +37,6 @@
                 justify-content: center;
             }
 
-            .position-ref {
-                position: relative;
-            }
-
             .top-right {
                 position: absolute;
                 right: 10px;
@@ -64,12 +60,10 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
+]
         </style>
     </head>
+
     <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
@@ -93,10 +87,11 @@
                 <h1> Taste your Brain. Beat Boredom. Try BrainCandy. </h1>
                 <br>
                 <div class="links">
-                    <a href="about">About</a>
-                    <a href="contact">Contact</a>
+                    <!-- <a href="about">About</a>
+                    <a href="contact">Contact</a> -->
                 </div>
             </div>
         </div>
     </body>
-</html>
+
+    </html>

@@ -23,13 +23,57 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .link_logo {
+                height: 85px;
+                width: 95px;
+        }
+
+        .centerBlock > a {
+                display: table;
+                margin: auto;
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .flex-center{
+                align-items: center;
+                diplay: flex;
+                justify-content: center;
+            }
+
+
+            .position-ref {
+                position: relative;
+            }
+
+
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 84px;
+            }
+
+
+        .m-b-md {
+            margin-bottom: 30px;
+        }
+
+    </style>
 </head>
 <body style="background-color: #E8F0F2">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                        <img style="height: 55px; width: 65px" src="http://localhost:8000/storage/candy.png">
+                        <img style="height: 55px; width: 65px;" src="{{ asset('candy.png') }}">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
