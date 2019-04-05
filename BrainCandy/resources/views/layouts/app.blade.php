@@ -15,14 +15,27 @@
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"
           integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
           crossorigin="anonymous"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="" defer></script>
+
+
+
+    <!-- TODO these 3 are neded for tags -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" />
+    <script src="http://demo.itsolutionstuff.com/plugin/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
     <style>
         .link_logo {
                 height: 85px;
@@ -67,6 +80,7 @@
         }
 
     </style>
+
 </head>
 <body style="background-color: #E8F0F2">
     <div id="app">

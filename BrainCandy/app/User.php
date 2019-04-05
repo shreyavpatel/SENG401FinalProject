@@ -41,6 +41,16 @@ class User extends Authenticatable
         return $this->hasMany(Interest::class);
     }
 
+    //TODO unused
+    public function interestsStringArray(){
+        $interests = $this->interests;
+        $arr = [];
+        foreach($interests as $i){
+            array_push($arr, $i->interest);
+        }
+        return $arr;
+    }
+
     public function interestsString(){
         $interests = $this->interests;
         $string = '';
