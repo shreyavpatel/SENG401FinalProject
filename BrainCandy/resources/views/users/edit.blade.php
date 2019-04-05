@@ -19,7 +19,7 @@
         <div class="col-md-2" >
             <img class="link_logo" src="{{ asset('lolipop.png') }}">
         </div>
-        <div class="col-md-8" style='text-align:center'>
+        <div class="col-md-7" style='text-align:center'>
             <h2>{{$user->name}}</h2>
             <h1>Edit Your Flavor Profile</h1>
         </div>     
