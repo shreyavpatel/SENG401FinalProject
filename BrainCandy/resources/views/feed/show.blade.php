@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
 <script>
 	$(document).ready(function(){
@@ -86,14 +90,21 @@
 
 	<div id="Youtube results">
 
+
 		<h4> Your youtube FLAVOURS </h4>
-
 		@foreach ($youtube_interests as $interest)
+		
+			<hr>
+			
+			<!-- <a href=" $interest->url "> -->
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $interest->id->videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<!-- <img src="{{ $interest->snippet->thumbnails->medium->url }}"> -->
 
-<!-- 		<script> console.log("Interest: "); console.log("Interests: {{ $interest }}") </script>
- -->
+			<h5>{{ $interest->snippet->title }}</h5>
+
+			<a>
+
 		@endforeach
-
 	</div>
 
 </div>
