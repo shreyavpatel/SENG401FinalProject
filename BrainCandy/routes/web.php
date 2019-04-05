@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 
 Route::resource('youtube', 'YoutubeController');
+Route::resource('flickr', 'FlickrController');
 Route::resource('users', 'UserController');
 Route::resource('feed', 'FeedController');
 
