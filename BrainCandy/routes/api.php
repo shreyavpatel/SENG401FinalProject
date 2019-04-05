@@ -20,13 +20,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('twitter/{num}/{param}', function()
 {
-	return Twitter::getSearch(['q' => Route::input('param').'-filter:nativeretweets',  'format' => 'json', 'lang' => 'en', 'count' => Route::input('num')]);
+	return Twitter::getSearch(['q' => Route::input('param').'-filter:nativeretweets-filter:replies ',  'format' => 'json', 'lang' => 'en', 'count' => Route::input('num')]);
 });
 
 
 Route::get('twitter/id/{num}/{param}', function()
 {
-	$result = Twitter::getSearch(['q' => Route::input('param').'-filter:nativeretweets',  'format' => 'json', 'lang' => 'en', 'count' => Route::input('num')]);
+	$result = Twitter::getSearch(['q' => Route::input('param').'-filter:nativeretweets-filter:replies ',  'format' => 'json', 'lang' => 'en', 'count' => Route::input('num')]);
   $result_arr = json_decode($result, true);
   $id_arr = array();
   foreach ($result_arr['statuses'] as $tweet) {
