@@ -90,8 +90,8 @@
 
 		@foreach ($youtube_interests as $interest)
 
-		<script> console.log("Interest: "); console.log("Interests: {{ $interest }}") </script>
-
+<!-- 		<script> console.log("Interest: "); console.log("Interests: {{ $interest }}") </script>
+ -->
 		@endforeach
 
 	</div>

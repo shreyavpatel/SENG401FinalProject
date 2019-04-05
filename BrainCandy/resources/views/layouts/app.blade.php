@@ -15,14 +15,28 @@
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"
           integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
           crossorigin="anonymous"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="" defer></script>
+    <!-- TODO removed {{ asset('js/app.js') }} to make tags work, but othr stuff probably doesnt work now -->
+
+
+
+    <!-- TODO these 3 are neded for tags -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" />
+    <script src="http://demo.itsolutionstuff.com/plugin/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
     <style>
         .link_logo {
                 height: 85px;
@@ -65,14 +79,16 @@
         .m-b-md {
             margin-bottom: 30px;
         }
+
     </style>
+
 </head>
 <body style="background-color: #E8F0F2">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                        <img style="height: 55px; width: 65px" src="{{ asset('candy.png') }}">
+                        <img style="height: 55px; width: 65px;" src="{{ asset('candy.png') }}">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
