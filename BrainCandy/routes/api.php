@@ -20,5 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('twitter/{param}', function()
 {
-	return Twitter::getSearch(['q' => Route::input('param'),  'format' => 'json', 'lang' => 'en']);
+	return Twitter::getSearch(['q' => Route::input('param').'-filter:nativeretweets',  'format' => 'json', 'lang' => 'en', 'count' => '50']);
 });
