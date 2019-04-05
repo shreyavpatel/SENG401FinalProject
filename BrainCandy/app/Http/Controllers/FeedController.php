@@ -9,6 +9,21 @@ use Auth;
 
 class FeedController extends Controller
 {
+
+    public function getTweets($interests){
+      $count =(int) floor(25/sizeof($interests));
+      $tweets = array();
+      foreach($interests as $interest){
+        $request = Request::create(url('/api/twitter/id').'/'.$count.'/'.$interest['interest'], "GET");
+        $response = Route::dispatch($request);
+        //dd($response);
+        $result_arr = json_decode($response->getContent());
+        $tweets = array_merge($tweets, $result_arr);
+      }
+      shuffle($tweets);
+      return $tweets;
+    }
+
     public function index(){
 
     	$user = Auth()->user();
@@ -25,11 +40,11 @@ class FeedController extends Controller
     		$path = storage_path() . "/app/public/whales_youtube.json";
 
 
-    		$response = json_decode(file_get_contents($path), false); 
+    		$response = json_decode(file_get_contents($path), false);
 
     		$youtube_myInterests_results = $response;
 
-    		// We will enable this json request for demo 
+    		// We will enable this json request for demo
     		// ****************
 
 
@@ -66,15 +81,19 @@ class FeedController extends Controller
 
 
 		// END OF YOUTUBE API STUFF *****************************************
+    // START OF TWITTER API STUFF ***************************************
+    $tweets = FeedController::getTweets($user_interests);
+    //dd($tweets);
+    // END OF TWITTER API STUFF *****************************************
+
+    // flickr stuff goes below here
 
 
-		// flickr and twitter stuff goes below here
-
-
-        return view('feed.show')->with('youtube_interests', $youtube_interests);
+    return view('feed.show')->with('youtube_interests', $youtube_interests)->with('tweets', $tweets);
     	// Things to do in Index:
     	// TODO: Grab youtube api data based on 'tastes'
     	// TODO: Do the same for flickr and Twitter
 
     }
+
 }

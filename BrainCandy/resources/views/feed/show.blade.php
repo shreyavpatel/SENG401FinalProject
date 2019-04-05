@@ -1,6 +1,23 @@
 @extends('layouts.app')
+<!-- Twitter Rendering -->
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
 
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
 @section('content')
+
 <script>
 	$(document).ready(function(){
 		var options = [];
@@ -20,14 +37,14 @@
 		   }
 
 		   $( event.target ).blur();
-		      
+
 			console.log( options );
 			return false;
 		});
 
 		$( ".myHover" ).hover( function() {
 			$(this).css("background-color", "#6DD1B0");
-			}, 
+			},
 			function(){
   				$(this).css("background-color", "#fff");
 		});
@@ -48,10 +65,10 @@
 				<div class="col-md-8" style='text-align:center'>
 						<br>
             <h1>My Feed</h1>
-        </div>     
+        </div>
         <div class="col-md-2" >
             <img class="link_logo" src="{{ asset('mouth.png') }}">
-        </div> 
+        </div>
 		</div>
 
 	<hr>
@@ -82,14 +99,25 @@
 		</div>
 	</div>
 
+	<div id="Twitter Results">
+
+
+		<h4> Your Twitter FLAVOURS </h4>
+		@foreach ($tweets as $tweet)
+			<hr>
+				<div class="tweet_container" id="{{$tweet}}"></div>
+			<a>
+		@endforeach
+	</div>
+
 	<div id="Youtube results">
 
 
 		<h4> Your youtube FLAVOURS </h4>
 		@foreach ($youtube_interests as $interest)
-		
+
 			<hr>
-			
+
 			<!-- <a href=" $interest->url "> -->
 				<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $interest->id->videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			<!-- <img src="{{ $interest->snippet->thumbnails->medium->url }}"> -->
@@ -102,4 +130,30 @@
 	</div>
 
 </div>
-@stop
+@endsection
+@section("footer_scripts")
+<script>
+$(document).ready(function(){
+	$('.tweet_container').each(function(){
+			// for rendering tweets
+			let me =$(this).get(0);
+			let id = $(this).attr('id');
+			//console.log(id, me);
+			setTimeout(function(){
+				twttr.widgets.createTweet(
+					id,
+					me,
+				{
+					theme: 'light'
+				}
+				).then( function( el ) {
+					console.log("tweet added");
+				});
+				twttr.widgets.load(
+					me
+				);
+		 	},2000);
+	});
+});
+</script>
+@endsection

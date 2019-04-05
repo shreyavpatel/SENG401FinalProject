@@ -78,7 +78,7 @@
                           theme: 'light'
                         }
                       ).then( function( el ) {
-                        console.log(value);
+                        console.log(document.getElementById(value));
                       });
 
                       twttr.widgets.load(
