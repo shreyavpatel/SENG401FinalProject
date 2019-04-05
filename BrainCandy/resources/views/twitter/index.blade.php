@@ -58,33 +58,55 @@
                   }
               }); // {{ url('twitter')}} + "/" +
                $.ajax({
-                  url: "{{ url('/api/twitter')}}" + "/50/" +$("#searchParameter").val(),
+                  //url: "{{ url('/api/twitter/')}}" + "/50/" +$("#searchParameter").val(),
+                  url: "{{ url('/api/twitter/id/')}}" + "/50/" +$("#searchParameter").val(),
                   method: 'GET',
                   data: {
 
                   },
                   success: function(result){
-                    console.log(JSON.parse(result).statuses);
+                    console.log(result);
                     $("#testResultArea").empty();
-                    $.each(JSON.parse(result).statuses, function (index, value){
-                      $("#testResultArea").append ("<div id="+value['id']+"></div>");
+                    $.each(result, function (index, value){
+                      $("#testResultArea").append ("<div id="+value+"></div>");
 
                       // for rendering tweets
                       twttr.widgets.createTweet(
-                         value['id_str'],
-                        document.getElementById(value['id']),
+                         value,
+                        document.getElementById(value),
                         {
                           theme: 'light'
                         }
                       ).then( function( el ) {
-                        console.log(value['id_str']);
+                        console.log(value);
                       });
 
                       twttr.widgets.load(
-                        document.getElementById(value['id'])
+                        document.getElementById(value)
                       );
 
                     });
+                    // console.log(JSON.parse(result).statuses);
+                    // $("#testResultArea").empty();
+                    // $.each(JSON.parse(result).statuses, function (index, value){
+                    //   $("#testResultArea").append ("<div id="+value['id']+"></div>");
+                    //
+                    //   // for rendering tweets
+                    //   twttr.widgets.createTweet(
+                    //      value['id_str'],
+                    //     document.getElementById(value['id']),
+                    //     {
+                    //       theme: 'light'
+                    //     }
+                    //   ).then( function( el ) {
+                    //     console.log(value['id_str']);
+                    //   });
+                    //
+                    //   twttr.widgets.load(
+                    //     document.getElementById(value['id'])
+                    //   );
+                    //
+                    // });
               }});
            });
         });
