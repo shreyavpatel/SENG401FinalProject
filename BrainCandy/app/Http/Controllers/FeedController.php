@@ -20,7 +20,7 @@ class FeedController extends Controller
 
     	foreach($user_interests as $interest){
 
-    		// This is an example JSON request for the purpose of testing to save Queries
+    		// Youtube API stuff *******************************************************
 
     		$path = storage_path() . "/app/public/whales_youtube.json";
 
@@ -62,36 +62,19 @@ class FeedController extends Controller
 			array_push($interests_videos, $interest_result);
 		}
 
-		// foreach($interests_videos as $video){
-		// 	info($video); //write info to console.log
-		// }
-
 		$youtube_interests = $interests_videos;
 
-		// return view('feed.show', [
-		// 	'youtube_interests' => compact($youtube_interests),
-		// ]);
-		// dd($youtube_interests);
-		// foreach($youtube_interests as $temp){
-		// 	dd($temp);
-		// }
+
+		// END OF YOUTUBE API STUFF *****************************************
+
+
+		// flickr and twitter stuff goes below here
+
+
         return view('feed.show')->with('youtube_interests', $youtube_interests);
     	// Things to do in Index:
     	// TODO: Grab youtube api data based on 'tastes'
     	// TODO: Do the same for flickr and Twitter
 
-    	// for example for youtube:
-    	// $user = Auth()->user();
-    	// // dd($user);
-    	// $interests = $user->interests;
-    	// $interests_array = [];
-    	// // dd($interests);
-    	// foreach ($interests as $item) {
-    	// 	array_push($interests_array, $item->interest);
-    	// }
-
-    	//$request = Route::create('/youtube/search/', 'GET');
-
-    	//$response = Route::dispatch($request);
     }
 }
