@@ -23,25 +23,32 @@
 <div class="row">
 
     @if($like->platform == 0) <!-- YOUTUBE -->
-            <!-- bootstrap class="row" divides the page in 12 columns. we decide how wide each of the following elements should be with class="col-md-X"-->
-            <div class="col-md-3">
-                <a href='youtube/show/{{$like->item}}'>
-                    <!-- THUMBNAIL -->
-                    <img src="https://img.youtube.com/vi/{{$like->item}}/0.jpg" alt="YT img" class="img-fluid">
-            </div>
-                <div class="col-md-8">
-                    <h2>
-                        {{$like->getYoutubeTitle()}}
-                        <!-- <iframe width="280" height="158" src="https://www.youtube.com/embed/{{$like->item}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-                    </h2>
-                </a>
-            </div>
+        <!-- bootstrap class="row" divides the page in 12 columns. we decide how wide each of the following elements should be with class="col-md-X"-->
+        <div class="col-md-3">
+            <a href='youtube/show/{{$like->item}}'>
+                <!-- THUMBNAIL -->
+                <img src="https://img.youtube.com/vi/{{$like->item}}/0.jpg" alt="YT img" class="img-fluid">
+        </div>
+            <div class="col-md-8">
+                <h2>
+                    {{$like->getYoutubeTitle()}}
+                    <iframe width="280" height="158" src="https://www.youtube.com/embed/{{$like->item}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </h2>
+            </a>
+        </div>
     @elseif($like->platform == 1) <!-- FLICKR -->
-        flickr
+        <div class="flickr_container" >
+            <a href="https://www.flickr.com/photos/{{$like->item['owner']}}/{{$like->item['id']}}">
+            <h5>{{$like->item['title']}}</h5>
+                <img src= "https://farm{{$like->item['farm']}}.staticflickr.com/{{$like->item['server']}}/{{$like->item['id']}}_{{$like->item['secret']}}.jpg">
+            </a>
+        </div>
+
     @elseif($like->platform == 2) <!-- TWITTER -->
-        tweet
+        <div class="tweet_container" id="{{$like->item}}"></div>
+
     @else
-        error: platform is {{$like->platform}}
+        <!-- error: platform is {{$like->platform}} -->
     @endif
 
         <div class="col-md-1">

@@ -124,43 +124,47 @@
 		</div>
 	</div>
 
-	<div id="Twitter Results">
 
-		@foreach ($tweets as $tweet)
+
+	<div id="feed">
+		@foreach ($feedItems as $item)
 			<hr>
-				<div class="tweet_container" id="{{$tweet}}"></div>
-			<a>
-		@endforeach
+			@if($item['platform']==0) <!-- YOUTUBE -->
+					<!-- <a href=" $item['src']->url "> -->
+						<h5>{{ $item['src']->snippet->title }}</h5>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $item['src']->id->videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<!-- <img src=" $item['src']->snippet->thumbnails->medium->url "> -->
 
+			@elseif($item['platform']==1) 	<!-- FLICKR -->
+					<div class="flickr_container" >
+						<a href="https://www.flickr.com/photos/{{$item['src']['owner']}}/{{$item['src']['id']}}">
+						<h5>{{$item['src']['title']}}</h5>
+							<img src= "https://farm{{$item['src']['farm']}}.staticflickr.com/{{$item['src']['server']}}/{{$item['src']['id']}}_{{$item['src']['secret']}}.jpg">
+						</a>
+					</div>
+
+			@elseif($item['platform']==2) <!-- TWITTER -->
+				<div class="tweet_container" id="{{$item['src']}}"></div>
+
+			@endif
+			<!-- like button -->
+			<!-- Form::model($item, ['method'=>'POST', 'action'=>['LikeController@store',$item]])  -->
+			<!-- {!!Form::open(array('action' => 'LikeController@store' )) !!}
+				{!! Form::hidden('$item', json_encode($item)) !!}
+				{!! Form::submit('Like', ['class' => 'btn btn-outline-danger btn-sm']) !!}
+			{!! Form::close() !!} -->
+
+			<a method="POST" href=" {{ action('LikeController@store', ['item' => $item]) }}" class="btn">Like</a>
+
+			<!-- TODO: give a popup that it liked successfuly, or turn it into an unlike button -->
+		@endforeach
 	</div>
 
 
-	<div id="Youtube results">
-
-		@foreach ($youtube_interests as $interest)
-			<hr>
-			<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $interest->id->videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-			<h5>{{ $interest->snippet->title }}</h5>
-		@endforeach
-	</div>
+</div><!-- end of div class='row' -->
 
 
-	  <div id="Flickr Results">
 
-	    @foreach ($flickrs as $flickr)
-	      <hr>
-	      <div class="flickr_container" >
-	        <img src= "https://farm{{$flickr['farm']}}.staticflickr.com/{{$flickr['server']}}/{{$flickr['id']}}_{{$flickr['secret']}}.jpg">
-	        <br>
-	        <a href="https://www.flickr.com/photos/{{$flickr['owner']}}/{{$flickr['id']}}">{{$flickr['title']}}</a>
-	      </div>
-	      <a>
-	    @endforeach
-
-	  </div>
-
-</div>
 @endsection
 
 @section("footer_scripts")

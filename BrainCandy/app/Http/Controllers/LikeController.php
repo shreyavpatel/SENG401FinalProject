@@ -42,7 +42,12 @@ class LikeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+        Like::create([
+            'user_id'=> Auth()->user()->id,
+            'item'=>$item['src'],
+            'platform'=> $item['platform']// 0 youtube, 1 Flickr, 2 Twitter
+        ]);
     }
 
     /**
