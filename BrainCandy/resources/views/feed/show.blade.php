@@ -1,21 +1,24 @@
 @extends('layouts.app')
-<!-- Twitter Rendering -->
-<script>window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
+	<!-- Twitter Rendering -->
+	<script>
+		window.twttr = (function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0],
+		    t = window.twttr || {};
+		  if (d.getElementById(id)) return t;
+		  js = d.createElement(s);
+		  js.id = id;
+		  js.src = "https://platform.twitter.com/widgets.js";
+		  fjs.parentNode.insertBefore(js, fjs);
 
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
+		  t._e = [];
+		  t.ready = function(f) {
+		    t._e.push(f);
+		  };
 
-  return t;
-}(document, "script", "twitter-wjs"));</script>
+	  	  return t;
+		}(document, "script", "twitter-wjs"));
+	</script>
+
 @section('content')
 
 <script>
@@ -49,6 +52,30 @@
   				$(this).css("background-color", "#fff");
 		});
 
+		if(document.getElementById('youtube').checked) {
+			$(document.getElementById('Youtube Results')).show();
+
+		}
+		else {
+			$(document.getElementById('Youtube Results')).hide();
+		}
+
+		if(document.getElementById('flickr').checked) {
+			$(document.getElementById('Flickr Results')).show();
+
+		}
+		else {
+			$(document.getElementById('Flickr Results')).hide();
+		}
+
+		if(document.getElementById('twitter').checked) {
+			$(document.getElementById('Twitter Results')).show();
+
+		}
+		else {
+			$(document.getElementById('Twitter Results')).hide();
+		}
+
 
 
 	});
@@ -73,8 +100,6 @@
 
 	<hr>
 
-
-
 	<div class="row">
        <div class="col-lg-12">
 
@@ -84,13 +109,13 @@
 			  </button>
 				<ul class="dropdown-menu" style="text-align: left">
 					<div class='myHover'>
-			  		<li data-value="videoopt" style="display:inline-block;padding-left: 15px;"><input type="checkbox" data-value="option1"/>&nbsp;Youtube Videos</li>
+				  		<li data-value="videoopt" style="display:inline-block;padding-left: 15px;"><input id = "youtube" type="checkbox" checked/>&nbsp;Youtube Videos</li>
+						</div>
+					<div class='myHover'>
+						<li data-value="photoopt" style="display:inline-block;padding-left: 15px;"><input id = "flickr" type="checkbox"checked/>&nbsp;Flickr photos</li>
 					</div>
 					<div class='myHover'>
-						<li data-value="photoopt" style="display:inline-block;padding-left: 15px;"><input type="checkbox"/>&nbsp;Flickr photos</li>
-					</div>
-					<div class='myHover'>
-						<li data-value="tweetopt" style="display:inline-block;padding-left: 15px;"><input type="checkbox"/>&nbsp;Tweets</li>
+						<li data-value="tweetopt" style="display:inline-block;padding-left: 15px;"><input id = "twitter" type="checkbox"checked/>&nbsp;Tweets</li>
 					</div>
 
 			  </ul>
@@ -99,72 +124,68 @@
 		</div>
 	</div>
 
-  <div id="Flickr Results">
-    <h4> Your Flickr FLAVOURS </h4>
-    @foreach ($flickrs as $flickr)
-      <hr>
-      <div class="flickr_container" >
-        <img src= "https://farm{{$flickr['farm']}}.staticflickr.com/{{$flickr['server']}}/{{$flickr['id']}}_{{$flickr['secret']}}.jpg">
-        <br><a href="https://www.flickr.com/photos/{{$flickr['owner']}}/{{$flickr['id']}}">{{$flickr['title']}}</a>
-      </div>
-      <a>
-    @endforeach
-  </div>
-
 	<div id="Twitter Results">
 
-
-		<h4> Your Twitter FLAVOURS </h4>
 		@foreach ($tweets as $tweet)
 			<hr>
 				<div class="tweet_container" id="{{$tweet}}"></div>
 			<a>
 		@endforeach
+
 	</div>
 
 
 	<div id="Youtube results">
-		<h4> Your youtube FLAVOURS </h4>
+
 		@foreach ($youtube_interests as $interest)
-
 			<hr>
-
-			<!-- <a href=" $interest->url "> -->
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $interest->id->videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-			<!-- <img src="{{ $interest->snippet->thumbnails->medium->url }}"> -->
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $interest->id->videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 			<h5>{{ $interest->snippet->title }}</h5>
-
-			<a>
-
 		@endforeach
 	</div>
 
+
+	  <div id="Flickr Results">
+
+	    @foreach ($flickrs as $flickr)
+	      <hr>
+	      <div class="flickr_container" >
+	        <img src= "https://farm{{$flickr['farm']}}.staticflickr.com/{{$flickr['server']}}/{{$flickr['id']}}_{{$flickr['secret']}}.jpg">
+	        <br>
+	        <a href="https://www.flickr.com/photos/{{$flickr['owner']}}/{{$flickr['id']}}">{{$flickr['title']}}</a>
+	      </div>
+	      <a>
+	    @endforeach
+
+	  </div>
+
 </div>
 @endsection
+
 @section("footer_scripts")
-<script>
-$(document).ready(function(){
-	$('.tweet_container').each(function(){
-			// for rendering tweets
-			let me =$(this).get(0);
-			let id = $(this).attr('id');
-			//console.log(id, me);
-			setTimeout(function(){
-				twttr.widgets.createTweet(
-					id,
-					me,
-				{
-					theme: 'light'
-				}
-				).then( function( el ) {
-					console.log("tweet added");
-				});
-				twttr.widgets.load(
-					me
-				);
-		 	},2000);
-	});
-});
-</script>
+	<script>
+		$(document).ready(function(){
+			$('.tweet_container').each(function(){
+					// for rendering tweets
+					let me =$(this).get(0);
+					let id = $(this).attr('id');
+					//console.log(id, me);
+					setTimeout(function(){
+						twttr.widgets.createTweet(
+							id,
+							me,
+						{
+							theme: 'light'
+						}
+						).then( function( el ) {
+							console.log("tweet added");
+						});
+						twttr.widgets.load(
+							me
+						);
+				 	},2000);
+			});
+		});
+	</script>
 @endsection
