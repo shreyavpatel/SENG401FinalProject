@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Like;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class LikeController extends Controller
 {
@@ -42,12 +43,21 @@ class LikeController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $platform = $request->input('item')['platform']; // 0 youtube, 1 Flickr, 2 Twitter
+        // dd($request->input('item')['src']);
+
+        $itemVal = null;
+        if($platform==0){//youtube
+            $itemVal = $request->input('item')['src']['id']['videoId'];
+        }
+        //TODO twitter, flickr
+
         Like::create([
             'user_id'=> Auth()->user()->id,
-            'item'=>$item['src'],
-            'platform'=> $item['platform']// 0 youtube, 1 Flickr, 2 Twitter
+            'item'=>$itemVal,
+            'platform'=> $platform
         ]);
+        return Redirect::back();
     }
 
     /**

@@ -147,15 +147,10 @@
 				<div class="tweet_container" id="{{$item['src']}}"></div>
 
 			@endif
-			<!-- like button -->
-			<!-- Form::model($item, ['method'=>'POST', 'action'=>['LikeController@store',$item]])  -->
-			<!-- {!!Form::open(array('action' => 'LikeController@store' )) !!}
-				{!! Form::hidden('$item', json_encode($item)) !!}
-				{!! Form::submit('Like', ['class' => 'btn btn-outline-danger btn-sm']) !!}
-			{!! Form::close() !!} -->
-
-			<a method="POST" href=" {{ action('LikeController@store', ['item' => $item]) }}" class="btn">Like</a>
-
+			<!-- <a method="POST" href=" {{ action('LikeController@store', ['item' => $item]) }}" class="btn">Like</a> -->
+			<form method="POST" action="{{ action('LikeController@store', ['item' => $item]) }}" accept-charset="UTF-8">
+				<button type="submit" class="btn btn-sm" syle='background:#6DD1B0;color:white;'>Like</button>
+			</form>
 			<!-- TODO: give a popup that it liked successfuly, or turn it into an unlike button -->
 		@endforeach
 	</div>
