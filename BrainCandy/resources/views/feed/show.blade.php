@@ -23,58 +23,47 @@
 
 <script>
 	$(document).ready(function(){
-		var options = [];
+		var options = ['videoopt', 'photoopt', 'tweetopt'];
 		$( '.dropdown-menu li' ).on( 'click', function(event) {
-
-		   var $target = $( event.currentTarget ),
+	   		var $target = $( event.currentTarget ),
 		       val = $target.attr( 'data-value' ),
 		       $inp = $target.find( 'input' ),
 		       idx;
 
-		   if ( ( idx = options.indexOf( val ) ) > -1 ) {
+	   		if ( ( idx = options.indexOf( val ) ) > -1 ) {
 		      options.splice( idx, 1 );
 		      setTimeout( function() { $inp.prop( 'checked', false ) }, 0);
-		   } else {
+	   		} else {
 		      options.push( val );
 		      setTimeout( function() { $inp.prop( 'checked', true ) }, 0);
-		   }
+	   		}
 
 		   $( event.target ).blur();
 
-		   $('#youtube').change( function() {
-		   		alert("hi");
-				if(this.checked) { 
+		   if(options.length < 3) {
+				if(jQuery.inArray("videoopt", options) !== -1) {
 					$('.youtube_container').show();
 				}
 				else {
 					$('.youtube_container').hide();
-				}	
-			});
+				}
+				if(jQuery.inArray("photoopt", options) !== -1) {
+					$('.flickr_container').show();
+				}
+				else {
+					$('.flickr_container').hide();
+				}
+				if(jQuery.inArray("tweetopt", options) !== -1) {
+					$('.tweet_container').show();
+				}
+				else {
+					$('.tweet_container').hide();
+				}
+			}
 
 			console.log( options );
 			return false;
 		});
-
-		// $('.dropdown-menu input').on('click', function() {
-			
-
-		// 	if(document.getElementById('flickr').checked) {
-		// 		$('.flickr_container').show();
-
-		// 	}
-		// 	else {
-		// 		$('.flickr_container').hide();
-		// 	}
-
-		// 	if(document.getElementById('twitter').checked) {
-		// 		$('.tweet_container').show();
-
-		// 	}
-		// 	else {
-		// 		$('.tweet_container').hide();
-		// 	}
-
-		// });
 
 		$( ".myHover" ).hover( function() {
 			$(this).css("background-color", "#6DD1B0");
@@ -114,13 +103,13 @@
 			  </button>
 				<ul class="dropdown-menu" style="text-align: left">
 					<div class='myHover'>
-				  		<li data-value="videoopt" style="display:inline-block;padding-left: 15px;"><input id = "youtube" type="checkbox" checked/>&nbsp;Youtube Videos</li>
+				  		<li data-value="videoopt" style="display:inline-block;padding-left: 15px;"><input name = "youtube" type="checkbox" checked/>&nbsp;Youtube Videos</li>
 						</div>
 					<div class='myHover'>
-						<li data-value="photoopt" style="display:inline-block;padding-left: 15px;"><input id = "flickr" type="checkbox"checked/>&nbsp;Flickr photos</li>
+						<li data-value="photoopt" style="display:inline-block;padding-left: 15px;"><input name = "flickr" type="checkbox"checked/>&nbsp;Flickr photos</li>
 					</div>
 					<div class='myHover'>
-						<li data-value="tweetopt" style="display:inline-block;padding-left: 15px;"><input id = "twitter" type="checkbox"checked/>&nbsp;Tweets</li>
+						<li data-value="tweetopt" style="display:inline-block;padding-left: 15px;"><input name = "twitter" type="checkbox"checked/>&nbsp;Tweets</li>
 					</div>
 
 			  </ul>
@@ -129,16 +118,22 @@
 		</div>
 	</div>
 
-
+	<hr>
 
 	<div id="feed">
 		@foreach ($feedItems as $item)
-			<hr>
 			@if($item['platform']==0) <!-- YOUTUBE -->
 					<!-- <a href=" $item['src']->url "> -->
 					<div class="youtube_container">	
 						<h5>{{ $item['src']->snippet->title }}</h5>
 						<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $item['src']->id->videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<!-- <a method="POST" href=" {{ action('LikeController@store', ['item' => $item]) }}" class="btn">Like</a> -->
+						<form method="POST" action="{{ action('LikeController@store', ['item' => $item]) }}" accept-charset="UTF-8">
+							<br>
+							<button type="submit" class="btn btn-sm" style="background-color:#6DD1B0;color:white;">Like</button>
+						</form>
+						<!-- TODO: give a popup that it liked successfuly, or turn it into an unlike button -->
+					<hr>	
 					</div>	
 					<!-- <img src=" $item['src']->snippet->thumbnails->medium->url "> -->
 
@@ -148,18 +143,29 @@
 						<h5>{{$item['src']['title']}}</h5>
 							<img src= "https://farm{{$item['src']['farm']}}.staticflickr.com/{{$item['src']['server']}}/{{$item['src']['id']}}_{{$item['src']['secret']}}.jpg">
 						</a>
+						<!-- <a method="POST" href=" {{ action('LikeController@store', ['item' => $item]) }}" class="btn">Like</a> -->
+						<form method="POST" action="{{ action('LikeController@store', ['item' => $item]) }}" accept-charset="UTF-8">
+							<br>
+							<button type="submit" class="btn btn-sm" style="background-color:#6DD1B0;color:white;">Like</button>
+						</form>
+						<!-- TODO: give a popup that it liked successfuly, or turn it into an unlike button -->
+					<hr>	
 					</div>
 
 			@elseif($item['platform']==2) <!-- TWITTER -->
 				<div class="tweet_container" id="{{$item['src']}}"></div>
+				<div class="tweet_container">
+					<!-- <a method="POST" href=" {{ action('LikeController@store', ['item' => $item]) }}" class="btn">Like</a> -->
+					<form method="POST" action="{{ action('LikeController@store', ['item' => $item]) }}" accept-charset="UTF-8">
+						<br>
+						<button type="submit" class="btn btn-sm" style="background-color:#6DD1B0;color:white;">Like</button>
+					</form>
+					<!-- TODO: give a popup that it liked successfuly, or turn it into an unlike button -->
+				<hr>	
+				</div>	
 
 			@endif
-			<!-- <a method="POST" href=" {{ action('LikeController@store', ['item' => $item]) }}" class="btn">Like</a> -->
-			<form method="POST" action="{{ action('LikeController@store', ['item' => $item]) }}" accept-charset="UTF-8">
-				<br>
-				<button type="submit" class="btn btn-sm" style="background-color:#6DD1B0;color:white;">Like</button>
-			</form>
-			<!-- TODO: give a popup that it liked successfuly, or turn it into an unlike button -->
+
 		@endforeach
 	</div>
 
