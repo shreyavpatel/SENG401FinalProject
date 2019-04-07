@@ -41,9 +41,40 @@
 
 		   $( event.target ).blur();
 
+		   $('#youtube').change( function() {
+		   		alert("hi");
+				if(this.checked) { 
+					$('.youtube_container').show();
+				}
+				else {
+					$('.youtube_container').hide();
+				}	
+			});
+
 			console.log( options );
 			return false;
 		});
+
+		// $('.dropdown-menu input').on('click', function() {
+			
+
+		// 	if(document.getElementById('flickr').checked) {
+		// 		$('.flickr_container').show();
+
+		// 	}
+		// 	else {
+		// 		$('.flickr_container').hide();
+		// 	}
+
+		// 	if(document.getElementById('twitter').checked) {
+		// 		$('.tweet_container').show();
+
+		// 	}
+		// 	else {
+		// 		$('.tweet_container').hide();
+		// 	}
+
+		// });
 
 		$( ".myHover" ).hover( function() {
 			$(this).css("background-color", "#6DD1B0");
@@ -51,32 +82,6 @@
 			function(){
   				$(this).css("background-color", "#fff");
 		});
-
-		if(document.getElementById('youtube').checked) {
-			$(document.getElementById('Youtube Results')).show();
-
-		}
-		else {
-			$(document.getElementById('Youtube Results')).hide();
-		}
-
-		if(document.getElementById('flickr').checked) {
-			$(document.getElementById('Flickr Results')).show();
-
-		}
-		else {
-			$(document.getElementById('Flickr Results')).hide();
-		}
-
-		if(document.getElementById('twitter').checked) {
-			$(document.getElementById('Twitter Results')).show();
-
-		}
-		else {
-			$(document.getElementById('Twitter Results')).hide();
-		}
-
-
 
 	});
 
@@ -104,7 +109,7 @@
        <div class="col-lg-12">
 
 			<div class="btn-group" style="float: right">
-			  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" style='background-color:#6DD1B0'>
+			  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style='background-color:#6DD1B0;color:white;'>
 			    My Palette
 			  </button>
 				<ul class="dropdown-menu" style="text-align: left">
@@ -131,8 +136,10 @@
 			<hr>
 			@if($item['platform']==0) <!-- YOUTUBE -->
 					<!-- <a href=" $item['src']->url "> -->
+					<div class="youtube_container">	
 						<h5>{{ $item['src']->snippet->title }}</h5>
 						<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $item['src']->id->videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</div>	
 					<!-- <img src=" $item['src']->snippet->thumbnails->medium->url "> -->
 
 			@elseif($item['platform']==1) 	<!-- FLICKR -->
@@ -149,7 +156,8 @@
 			@endif
 			<!-- <a method="POST" href=" {{ action('LikeController@store', ['item' => $item]) }}" class="btn">Like</a> -->
 			<form method="POST" action="{{ action('LikeController@store', ['item' => $item]) }}" accept-charset="UTF-8">
-				<button type="submit" class="btn btn-sm" syle='background:#6DD1B0;color:white;'>Like</button>
+				<br>
+				<button type="submit" class="btn btn-sm" style="background-color:#6DD1B0;color:white;">Like</button>
 			</form>
 			<!-- TODO: give a popup that it liked successfuly, or turn it into an unlike button -->
 		@endforeach
