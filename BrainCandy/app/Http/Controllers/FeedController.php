@@ -37,11 +37,11 @@ class FeedController extends Controller
         $rsp = file_get_contents($request);
         $rsp = str_replace('jsonFlickrApi(', '', $rsp );
         $rsp = substr( $rsp, 0, strlen( $rsp ) );
-        $flickrs = json_decode($rsp, true);
-        $flickrs = $flickrs['photos']['photo'];
+        $flick = json_decode($rsp, true);
+        $flickrs = array_merge($flickrs, $flick['photos']['photo']);
       }
     //  dd ($flickrs);
-      // shuffle($flickrs); // everything is shuffled later anyways when mixed together
+      shuffle($flickrs); // everything is shuffled later anyways when mixed together
       return $flickrs;
     }
 
