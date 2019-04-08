@@ -51,14 +51,14 @@ class LikeController extends Controller
             $itemVal = $request->input('item')['src']['id']['videoId'];
         }
         if($platform==1){//flickr
+            //right now, a flickr item is stored in the database in the following format: '<href> <title> <imgLink>'. I know this isnt good database design k
             $itemVal =  "https://www.flickr.com/photos/".$request->input('item')['src']['owner']."/".$request->input('item')['src']['id']. " " .$request->input('item')['src']['title']." https://farm".$request->input('item')['src']['farm'].".staticflickr.com/".$request->input('item')['src']['server']."/".$request->input('item')['src']['id']."_".$request->input('item')['src']['secret'].".jpg";
             // "https://www.flickr.com/photos/{{$item['src']['owner']}}/{{$item['src']['id']}}". title={{$item['src']['title']}}, and src="https://farm{{$item['src']['farm']}}.staticflickr.com/{{$item['src']['server']}}/{{$item['src']['id']}}_{{$item['src']['secret']}}.jpg"
         }
-        if($platform==2){//twitter
-            // $itemVal = $request->input('item')['src']['id']['videoId'];
+        if($platform==2){//twitter'
+            $itemVal = $request->input('item')['src']; // just the tweet ID
         }
-        //TODO twitter, flickr
-
+        
         Like::create([
             'user_id'=> Auth()->user()->id,
             'item'=>$itemVal,

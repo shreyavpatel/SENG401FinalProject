@@ -25,6 +25,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
+        h1{
+            letter-spacing: .1rem;
+        }
         .link_logo {
                 height: 85px;
                 width: 95px;

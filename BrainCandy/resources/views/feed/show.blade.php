@@ -95,7 +95,7 @@
 	<hr>
 
 	<div class="row">
-       <div class="col-lg-12">
+		<div class="col-lg-12">
 
 			<div class="btn-group" style="float: right">
 			  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style='background-color:#6DD1B0;color:white;'>
@@ -114,7 +114,6 @@
 
 			  </ul>
 			</div>
-
 		</div>
 	</div>
 
@@ -136,10 +135,9 @@
 								<button type="submit" class="btn btn-sm" style="background-color:#6DD1B0;color:white;">Like</button>
 							</form>
 							<hr>
-							<!-- TODO: give a popup that it liked successfuly, or turn it into an unlike button -->
-						</div>	
-					<!-- <img src=" $item['src']->snippet->thumbnails->medium->url "> -->
-
+							<!-- TODO: give a popup that it liked successfuly, or turn it into an unlike button? -->
+						
+					</div>
 			@elseif($item['platform']==1) 	<!-- FLICKR -->
 					<div class="flickr_container" >
 						<a href="https://www.flickr.com/photos/{{$item['src']['owner']}}/{{$item['src']['id']}}">
@@ -154,11 +152,13 @@
 							<button type="submit" class="btn btn-sm" style="background-color:#6DD1B0;color:white;">Like</button>
 						</form>
 						<hr>
-						<!-- TODO: give a popup that it liked successfuly, or turn it into an unlike button -->
+						<!-- TODO: give a popup that it liked successfuly, or turn it into an unlike button? -->
 					</div>
 
 			@elseif($item['platform']==2) <!-- TWITTER -->
-				<div class="tweet_container" id="{{$item['src']}}"></div>
+				<div class="tweet_container" id="{{$item['src']}}">
+						<!-- the tweet will be rendered here --> 
+				</div>
 				<div class="tweet_container">
 					<!-- Like Button -->
 					<form method="POST" action="{{ action('LikeController@store', ['item' => $item]) }}" accept-charset="UTF-8">
@@ -168,7 +168,7 @@
 							<button type="submit" class="btn btn-sm" style="background-color:#6DD1B0;color:white;">Like</button>
 						</form>
 						<hr>
-						<!-- TODO: give a popup that it liked successfuly, or turn it into an unlike button -->
+						<!-- TODO: give a popup that it liked successfuly, or turn it into an unlike button? -->
 				</div>	
 
 			@endif
