@@ -127,14 +127,17 @@
 					<div class="youtube_container">	
 						<h5>{{ $item['src']->snippet->title }}</h5>
 						<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $item['src']->id->videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-						<!-- <a method="POST" href=" {{ action('LikeController@store', ['item' => $item]) }}" class="btn">Like</a> -->
-						<form method="POST" action="{{ action('LikeController@store', ['item' => $item]) }}" accept-charset="UTF-8">
-							<br>
-							<button type="submit" class="btn btn-sm" style="background-color:#6DD1B0;color:white;">Like</button>
-						</form>
-						<!-- TODO: give a popup that it liked successfuly, or turn it into an unlike button -->
-					<hr>	
-					</div>	
+					
+							<!-- Like Button -->
+							<form method="POST" action="{{ action('LikeController@store', ['item' => $item]) }}" accept-charset="UTF-8">
+								<input name="_method" type="hidden" value="POST">
+								@csrf
+								<br>
+								<button type="submit" class="btn btn-sm" style="background-color:#6DD1B0;color:white;">Like</button>
+							</form>
+							<hr>
+							<!-- TODO: give a popup that it liked successfuly, or turn it into an unlike button -->
+						</div>	
 					<!-- <img src=" $item['src']->snippet->thumbnails->medium->url "> -->
 
 			@elseif($item['platform']==1) 	<!-- FLICKR -->
@@ -143,29 +146,32 @@
 						<h5>{{$item['src']['title']}}</h5>
 							<img src= "https://farm{{$item['src']['farm']}}.staticflickr.com/{{$item['src']['server']}}/{{$item['src']['id']}}_{{$item['src']['secret']}}.jpg">
 						</a>
-						<!-- <a method="POST" href=" {{ action('LikeController@store', ['item' => $item]) }}" class="btn">Like</a> -->
+						<!-- Like Button -->
 						<form method="POST" action="{{ action('LikeController@store', ['item' => $item]) }}" accept-charset="UTF-8">
+							<input name="_method" type="hidden" value="POST">
+							@csrf
 							<br>
 							<button type="submit" class="btn btn-sm" style="background-color:#6DD1B0;color:white;">Like</button>
 						</form>
+						<hr>
 						<!-- TODO: give a popup that it liked successfuly, or turn it into an unlike button -->
-					<hr>	
 					</div>
 
 			@elseif($item['platform']==2) <!-- TWITTER -->
 				<div class="tweet_container" id="{{$item['src']}}"></div>
 				<div class="tweet_container">
-					<!-- <a method="POST" href=" {{ action('LikeController@store', ['item' => $item]) }}" class="btn">Like</a> -->
+					<!-- Like Button -->
 					<form method="POST" action="{{ action('LikeController@store', ['item' => $item]) }}" accept-charset="UTF-8">
-						<br>
-						<button type="submit" class="btn btn-sm" style="background-color:#6DD1B0;color:white;">Like</button>
-					</form>
-					<!-- TODO: give a popup that it liked successfuly, or turn it into an unlike button -->
-				<hr>	
+							<input name="_method" type="hidden" value="POST">
+							@csrf
+							<br>
+							<button type="submit" class="btn btn-sm" style="background-color:#6DD1B0;color:white;">Like</button>
+						</form>
+						<hr>
+						<!-- TODO: give a popup that it liked successfuly, or turn it into an unlike button -->
 				</div>	
 
 			@endif
-
 		@endforeach
 	</div>
 

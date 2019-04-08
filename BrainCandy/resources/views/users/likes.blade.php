@@ -37,12 +37,13 @@
             </a>
         </div>
     @elseif($like->platform == 1) <!-- FLICKR -->
-        <div class="flickr_container" >
-            <a href="https://www.flickr.com/photos/{{$like->item['owner']}}/{{$like->item['id']}}">
-            <h5>{{$like->item['title']}}</h5>
-                <img src= "https://farm{{$like->item['farm']}}.staticflickr.com/{{$like->item['server']}}/{{$like->item['id']}}_{{$like->item['secret']}}.jpg">
-            </a>
-        </div>
+        <div class="flickr_container" >        
+						<a href="{{explode (' ', $like->item)[0] }}">
+						<h5>{{explode (' ', $like->item)[1] }}</h5> 
+                            <img src= "{{explode (' ', $like->item)[2] }}"> 
+                            <!-- todo update the size to be fixed? -->
+						</a>
+            </div>
 
     @elseif($like->platform == 2) <!-- TWITTER -->
         <div class="tweet_container" id="{{$like->item}}"></div>
@@ -52,7 +53,7 @@
     @endif
 
         <div class="col-md-1">
-            <div class="btn-group-vertical" style="position:absolute;right:30%;bottom:0">
+            <div class="btn-group-vertical" style="position:absolute;right:20%;bottom:0">
                 <!--  REMOVE BUTTON   -->
                 {!! Form::model($like, ['method'=>'DELETE', 'action'=>['LikeController@destroy',$like->id]]) !!}
                 {!! Form::submit('Remove', ['class' => 'btn btn-outline-danger btn-sm']) !!}
