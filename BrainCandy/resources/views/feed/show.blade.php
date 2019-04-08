@@ -66,7 +66,6 @@
 		});
 
 		$('button[type="submit"]').click(function() {
-			alert("hi");
 			$(this).css("background-color", "#B5D6CB");
 		});
 
