@@ -18,8 +18,6 @@ Route::get('/', function () {
 Route::get('youtube/whywontitwork/{interests}', 'YoutubeController@mySearch');
 Route::get('youtube/show/{url}', 'YoutubeController@show');
 Route::resource('youtube', 'YoutubeController');
-Route::resource('twitter', 'TwitterController');
-Route::resource('flickr', 'FlickrController');
 
 Route::resource('users', 'UserController');
 Route::resource('feed', 'FeedController');
