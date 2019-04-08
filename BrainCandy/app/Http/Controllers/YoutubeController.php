@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Client;
 
 class YoutubeController extends Controller
-{
-
+{    
 
     public function index(){
 

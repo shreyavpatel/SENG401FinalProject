@@ -10,6 +10,11 @@ use Auth;
 class FeedController extends Controller
 {
 
+    public function __construct()
+    {
+      $this->middleware('auth');
+    }
+
     public function getTweets($interests){
       $count =(int) floor(25/sizeof($interests));
       $tweets = array();
@@ -20,7 +25,7 @@ class FeedController extends Controller
         $result_arr = json_decode($response->getContent());
         $tweets = array_merge($tweets, $result_arr);
       }
-      // shuffle($tweets); // everything is shuffled later anyways when mixed together 
+      // shuffle($tweets); // everything is shuffled later anyways when mixed together
       return $tweets;
     }
 
@@ -28,15 +33,15 @@ class FeedController extends Controller
       $count =(int) floor(25/sizeof($interests));
       $flickrs = array();
       foreach($interests as $interest){
-        $request = 'https://api.flickr.com/services/rest/?api_key=9ba520fd0687a94ce0684343f3def081&method=flickr.photos.search&format=json&nojsoncallback=1&tags='.$interest['interest'];
+        $request = 'https://api.flickr.com/services/rest/?api_key=9ba520fd0687a94ce0684343f3def081&method=flickr.photos.search&format=json&nojsoncallback=1&per_page=15&tags='.$interest['interest'];
         $rsp = file_get_contents($request);
         $rsp = str_replace('jsonFlickrApi(', '', $rsp );
         $rsp = substr( $rsp, 0, strlen( $rsp ) );
-      //  dd($rsp);
         $flickrs = json_decode($rsp, true);
         $flickrs = $flickrs['photos']['photo'];
       }
-      // shuffle($flickrs); // everything is shuffled later anyways when mixed together 
+    //  dd ($flickrs);
+      // shuffle($flickrs); // everything is shuffled later anyways when mixed together
       return $flickrs;
     }
 
