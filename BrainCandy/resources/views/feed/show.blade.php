@@ -76,7 +76,6 @@
   				$(this).css("background-color", "#fff");
 		});
 
-		$("")
 	});
 
 </script>
@@ -127,7 +126,6 @@
 	<div id="feed">
 		@foreach ($feedItems as $item)
 			@if($item['platform']==0) <!-- YOUTUBE -->
-					<!-- <a href=" $item['src']->url "> -->
 					<div class="youtube_container">	
 						<h5>{{ $item['src']->snippet->title }}</h5>
 						<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $item['src']->id->videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
