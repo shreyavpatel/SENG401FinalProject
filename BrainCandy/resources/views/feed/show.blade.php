@@ -65,6 +65,11 @@
 			return false;
 		});
 
+		$('button[type="submit"]').click(function() {
+			alert("hi");
+			$(this).css("background-color", "#B5D6CB");
+		});
+
 		$( ".myHover" ).hover( function() {
 			$(this).css("background-color", "#6DD1B0");
 			},
@@ -72,6 +77,7 @@
   				$(this).css("background-color", "#fff");
 		});
 
+		$("")
 	});
 
 </script>
