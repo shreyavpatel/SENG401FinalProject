@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use app\Interest;
+use GuzzleHttp\Client;
+
 use Auth;
 
 class FeedController extends Controller
@@ -13,6 +15,50 @@ class FeedController extends Controller
     public function __construct()
     {
       $this->middleware('auth');
+    }
+
+    public function getYoutube($interests){
+           
+
+       $interests_videos = [];
+      foreach($interests as $interest){
+
+        // Youtube API stuff *******************************************************
+        // $path = storage_path() . "/app/public/whales_youtube.json";
+        // $response = json_decode(file_get_contents($path), false);
+        // $youtube_myInterests_results = $response;
+
+        // We will enable this json request for demo
+        // ****************
+
+             $myURL = ("https://www.googleapis.com/youtube/v3/search/?part=snippet&maxResults=25&key=AIzaSyDsbrC-_RBZ28drg6FNV01xjvJ_QkYHZvE&q=".$interest->interest);
+          $client = new Client();
+          $res = $client->get($myURL);
+          $youtube_myInterests_results = (json_decode((String) $res->getBody())->items);
+
+        // *******************
+
+        // return $response;
+
+        if($youtube_myInterests_results == null){
+          console.log('$youtube_myInterests_results is null in FeedController:youtube didnt return anything, likely hit quota for the day ');
+          // abort(500); // server error
+          $youtube_myInterests_results = [];
+        }
+
+        foreach($youtube_myInterests_results as $interest_result){
+          // randomly choose some videos
+          if(rand(0, 10) < 2){
+            array_push($interests_videos, $interest_result);
+          }
+        }
+      }
+
+      if(count($interests_videos) == 0){ //TODO what does this do?
+        array_push($interests_videos, $interest_result); // the variable interest_result is out of scope here?
+      }
+
+      return $interests_videos;
     }
 
     public function getTweets($interests){
@@ -52,45 +98,8 @@ class FeedController extends Controller
     	// dd($user->interestsString());
     	$user_interests = ($user->interests);
 
-    	$interests_videos = [];
-    	foreach($user_interests as $interest){
-
-    		// Youtube API stuff *******************************************************
-    		$path = storage_path() . "/app/public/whales_youtube.json";
-    		$response = json_decode(file_get_contents($path), false);
-    		$youtube_myInterests_results = $response;
-
-    		// We will enable this json request for demo
-    		// ****************
-        // $request = Request::create('/youtube/whywontitwork/'.$interest->interest, "GET");
-
-        // $response = Route::dispatch($request);
-        // $youtube_myInterests_results = json_decode($response->content(), true);
-
-        // *******************
-
-        // return $response;
-
-        if($youtube_myInterests_results == null){
-          console.log('$youtube_myInterests_results is null in FeedController:youtube didnt return anything, likely hit quota for the day ');
-          // abort(500); // server error
-          $youtube_myInterests_results = [];
-        }
-
-        foreach($youtube_myInterests_results as $interest_result){
-          // randomly choose some videos
-          if(rand(0, 10) < 2){
-            array_push($interests_videos, $interest_result);
-          }
-        }
-		  }
-
-      if(count($interests_videos) == 0){ //TODO what does this do?
-        array_push($interests_videos, $interest_result); // the variable interest_result is out of scope here?
-      }
-
-      $youtube_interests = $interests_videos;
-      // dd($youtube_interests);
+      // START OF TWITTER API STUFF ***************************************
+      $youtube_interests = FeedController::getYoutube($user_interests);
       // END OF YOUTUBE API STUFF *****************************************
 
 
