@@ -160,8 +160,9 @@
                     {!! Form::model($like, ['method'=>'DELETE', 'action'=>['LikeController@destroy',$like->id]]) !!}
                     {!! Form::submit('Remove', ['class' => 'btn btn-outline-danger btn-sm']) !!}
                     {!! Form::close() !!}
-            </div>
-        <hr>
+
+        </div>
+        <div class="tweet_container"><hr> </div>
 
     @else
         <!-- error: platform is {{$like->platform}} -->
