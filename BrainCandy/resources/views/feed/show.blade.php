@@ -76,6 +76,25 @@
   				$(this).css("background-color", "#fff");
 		});
 
+		$('.LikeForm').submit(function(){
+			var formData = $(this).serialize();
+			$.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+                  }
+              });
+               console.log("Route: {{ url('/likes/store') }}");
+               $.ajax({
+                  url: "{{ url('/likes/store') }}",
+                  method: 'POST',
+                  data: formData,
+                  success: function(result){
+
+                  	// console.log(result['items']['snippet']);
+                  		console.log("successfuly liked the thing");
+					}
+                  });
+		});
 	});
 
 </script>
@@ -131,7 +150,7 @@
 						<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $item['src']->id->videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					
 							<!-- Like Button -->
-							<form method="POST" action="{{ action('LikeController@store', ['item' => $item]) }}" accept-charset="UTF-8">
+							<form method="POST" class="LikeForm" accept-charset="UTF-8">
 								<input name="_method" type="hidden" value="POST">
 								@csrf
 								<br>
@@ -148,7 +167,7 @@
 							<img src= "https://farm{{$item['src']['farm']}}.staticflickr.com/{{$item['src']['server']}}/{{$item['src']['id']}}_{{$item['src']['secret']}}.jpg">
 						</a>
 						<!-- Like Button -->
-						<form method="POST" action="{{ action('LikeController@store', ['item' => $item]) }}" accept-charset="UTF-8">
+						<form method="POST" class="LikeForm" accept-charset="UTF-8">
 							<input name="_method" type="hidden" value="POST">
 							@csrf
 							<br>
@@ -164,7 +183,7 @@
 				</div>
 				<div class="tweet_container">
 					<!-- Like Button -->
-					<form method="POST" action="{{ action('LikeController@store', ['item' => $item]) }}" accept-charset="UTF-8">
+					<form method="POST" class="LikeForm" accept-charset="UTF-8">
 							<input name="_method" type="hidden" value="POST">
 							@csrf
 							<br>
