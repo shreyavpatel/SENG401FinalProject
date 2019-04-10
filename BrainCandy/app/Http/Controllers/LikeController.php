@@ -71,7 +71,7 @@ class LikeController extends Controller
             'item'=>$itemVal,
             'platform'=> $platform
         ]);
-        return "200 Query OKAY";
+        return "200 Query Okay";
     }
 
     /**
