@@ -67,7 +67,7 @@
 
 		$('button[type="submit"]').click(function() {
 			$(this).css("background-color", "#B5D6CB");
-			$(this).attr("disabled", "true");
+			//$(this).attr("disabled", "true");
 		});
 
 		$( ".myHover" ).hover( function() {

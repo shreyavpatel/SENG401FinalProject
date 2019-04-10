@@ -139,7 +139,8 @@
         <div class="flickr_container" >        
             <a href="{{explode (' ', $like->item)[0] }}">
             <h5>{{explode (' ', $like->item)[1] }}</h5> 
-                <img src="{{explode (' ', $like->item)[2] }}" max-height='250px'> 
+           <!--      <img src="{{explode (' ', $like->item)[2] }}" max-height='250px'>  -->
+             <img src="{{strstr($like->item, 'https://farm')}}" max-height='250px'>
                 <!-- todo update the size to be fixed? -->
             </a>
             <div class="btn-group-vertical" style="font-size:15px;position:absolute;bottom:5%;right:0;">
