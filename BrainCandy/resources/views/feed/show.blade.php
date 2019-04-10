@@ -67,6 +67,7 @@
 
 		$('button[type="submit"]').click(function() {
 			$(this).css("background-color", "#B5D6CB");
+			$(this).attr("disabled", "true");
 		});
 
 		$( ".myHover" ).hover( function() {
@@ -155,6 +156,7 @@
 							<!-- Like Button -->
 							<form method="POST" class="LikeForm" accept-charset="UTF-8">
 								<input name="_method" type="hidden" value="POST">
+								<input name='item' type="hidden" value=" {{ json_encode($item) }} ">
 								@csrf
 								<br>
 								<button type="submit" class="btn btn-sm" style="background-color:#6DD1B0;color:white;">Like</button>
@@ -189,6 +191,7 @@
 					<!-- Like Button -->
 					<form method="POST" class="LikeForm" accept-charset="UTF-8">
 							<input name="_method" type="hidden" value="POST">
+							<input name='item' type="hidden" value=" {{ json_encode($item) }} ">
 							@csrf
 							<br>
 							<button type="submit" class="btn btn-sm" style="background-color:#6DD1B0;color:white;">Like</button>
