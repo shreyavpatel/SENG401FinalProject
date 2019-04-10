@@ -24,17 +24,17 @@ class FeedController extends Controller
       foreach($interests as $interest){
 
         // Youtube API stuff *******************************************************
-        // $path = storage_path() . "/app/public/whales_youtube.json";
-        // $response = json_decode(file_get_contents($path), false);
-        // $youtube_myInterests_results = $response;
+        $path = storage_path() . "/app/public/whales_youtube.json";
+        $response = json_decode(file_get_contents($path), false);
+        $youtube_myInterests_results = $response;
 
         // We will enable this json request for demo
         // ****************
 
-             $myURL = ("https://www.googleapis.com/youtube/v3/search/?part=snippet&maxResults=25&key=AIzaSyDsbrC-_RBZ28drg6FNV01xjvJ_QkYHZvE&q=".$interest->interest);
-          $client = new Client();
-          $res = $client->get($myURL);
-          $youtube_myInterests_results = (json_decode((String) $res->getBody())->items);
+          //    $myURL = ("https://www.googleapis.com/youtube/v3/search/?part=snippet&maxResults=25&key=AIzaSyDsbrC-_RBZ28drg6FNV01xjvJ_QkYHZvE&q=".$interest->interest);
+          // $client = new Client();
+          // $res = $client->get($myURL);
+          // $youtube_myInterests_results = (json_decode((String) $res->getBody())->items);
 
         // *******************
 

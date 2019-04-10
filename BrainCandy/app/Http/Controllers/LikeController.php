@@ -43,20 +43,27 @@ class LikeController extends Controller
      */
     public function store(Request $request)
     {
-        $platform = $request->input('item')['platform']; // 0 youtube, 1 Flickr, 2 Twitter
+        // return "BEFORE";
+        $var = $request->input('item');
+        $request_decode =  json_decode($var, true);
+        $platform = $request_decode['platform'];
+        // $platform = $request->input('item')['platform']; // 0 youtube, 1 Flickr, 2 Twitter
+        // return "here";
         // dd($request->input('item')['src']);
-
         $itemVal = null;
         if($platform==0){//youtube
-            $itemVal = $request->input('item')['src']['id']['videoId'];
+            $itemVal= $request_decode['src']['id']['videoId'];
+            // $itemVal = $request->input('item')['src']['id']['videoId'];
+            // return "here";
         }
+
+
         if($platform==1){//flickr
-            //right now, a flickr item is stored in the database in the following format: '<href> <title> <imgLink>'. I know this isnt good database design k
-            $itemVal =  "https://www.flickr.com/photos/".$request->input('item')['src']['owner']."/".$request->input('item')['src']['id']. " " .$request->input('item')['src']['title']." https://farm".$request->input('item')['src']['farm'].".staticflickr.com/".$request->input('item')['src']['server']."/".$request->input('item')['src']['id']."_".$request->input('item')['src']['secret'].".jpg";
-            // "https://www.flickr.com/photos/{{$item['src']['owner']}}/{{$item['src']['id']}}". title={{$item['src']['title']}}, and src="https://farm{{$item['src']['farm']}}.staticflickr.com/{{$item['src']['server']}}/{{$item['src']['id']}}_{{$item['src']['secret']}}.jpg"
+            
+            $itemVal =  "https://www.flickr.com/photos/".$request_decode['src']['owner']."/".$request_decode['src']['id']. " " .$request_decode['src']['title']." https://farm".$request_decode['src']['farm'].".staticflickr.com/".$request_decode['src']['server']."/".$request_decode['src']['id']."_".$request_decode['src']['secret'].".jpg";
         }
         if($platform==2){//twitter'
-            $itemVal = $request->input('item')['src']; // just the tweet ID
+            $itemVal = $request_decode['src']; // just the tweet ID
         }
         
         Like::create([
@@ -64,7 +71,7 @@ class LikeController extends Controller
             'item'=>$itemVal,
             'platform'=> $platform
         ]);
-        return Redirect::back();
+        return "200 OKAY";
     }
 
     /**

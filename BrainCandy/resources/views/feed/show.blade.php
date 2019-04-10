@@ -76,24 +76,27 @@
   				$(this).css("background-color", "#fff");
 		});
 
-		$('.LikeForm').submit(function(){
+		$('.LikeForm').submit(function(event){
+			event.preventDefault();
 			var formData = $(this).serialize();
 			$.ajaxSetup({
-                  headers: {
-                      'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
-                  }
-              });
-               console.log("Route: {{ url('/likes/store') }}");
-               $.ajax({
-                  url: "{{ url('/likes/store') }}",
-                  method: 'POST',
-                  data: formData,
-                  success: function(result){
+              headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+              }
+          	});
+            console.log("Route: {{ action('LikeController@store') }}");
+            $.ajax({
+            	url: "/likes/store",
+                method: 'POST',
+                data: formData,
+                success: function(result){
+                	console.log("Result: " + result);
 
-                  	// console.log(result['items']['snippet']);
-                  		console.log("successfuly liked the thing");
-					}
-                  });
+                	// console.log(result['items']['snippet']);
+                  	console.log("successfuly liked the thing");
+				}
+            });
+            console.log("Sent AJAX request");
 		});
 	});
 
@@ -169,6 +172,7 @@
 						<!-- Like Button -->
 						<form method="POST" class="LikeForm" accept-charset="UTF-8">
 							<input name="_method" type="hidden" value="POST">
+							<input name='item' type="hidden" value=" {{ json_encode($item) }} ">
 							@csrf
 							<br>
 							<button type="submit" class="btn btn-sm" style="background-color:#6DD1B0;color:white;">Like</button>

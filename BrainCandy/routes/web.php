@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('youtube/whywontitwork/{interests}', 'YoutubeController@mySearch');
 Route::get('youtube/show/{url}', 'YoutubeController@show');
+Route::post('likes/store', 'LikeController@store');
 Route::resource('youtube', 'YoutubeController');
 
 Route::resource('users', 'UserController');
