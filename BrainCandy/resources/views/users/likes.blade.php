@@ -138,7 +138,14 @@
     @elseif($like->platform == 1) <!-- FLICKR -->
         <div class="flickr_container" >        
             <a href="{{explode (' ', $like->item)[0] }}">
-            <h5>{{explode (' ', $like->item)[1] }}</h5> 
+                <h5>
+            @foreach(explode (' ', $like->item) as $title)
+                @if ($loop->index != 0 && !$loop->last) 
+                    {{$title}}&nbsp;
+                @endif
+            @endforeach 
+                </h5>       
+            <!-- <h5>{{explode (' ', $like->item)[1] }}</h5>  -->
            <!--      <img src="{{explode (' ', $like->item)[2] }}" max-height='250px'>  -->
              <img src="{{strstr($like->item, 'https://farm')}}" max-height='250px'>
                 <!-- todo update the size to be fixed? -->
